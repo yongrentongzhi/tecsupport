@@ -1,7 +1,7 @@
 ---
 toc: menu
 nav:
-  title: 安装hdr-civ包
+  # title: 安装hdr-civ包
   order: 5
 ---
 

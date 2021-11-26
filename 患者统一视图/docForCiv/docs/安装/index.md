@@ -1,8 +1,8 @@
 ---
-# toc: menu
+toc: menu
 nav:
   title: 安装
-  order: 1
+  order: 2
 ---
 
 
