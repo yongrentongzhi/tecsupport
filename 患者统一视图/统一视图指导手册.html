@@ -1,0 +1,2724 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统一视图指导手册</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p></p><div class="toc"><h3>统一视图指导手册</h3><ul><ul><li><a href="#_1">联系方式</a></li><li><a href="#_5">声明</a></li><li><a href="#1__7">1. 架构</a></li><ul><li><a href="#11__8">1.1 软件架构</a></li><ul><li><a href="#111__9">1.1.1 组件</a></li><ul><li><a href="#1111__11">1.1.1.1 统一视图应用</a></li><li><a href="#1112_solr_18">1.1.1.2 统一视图患者就诊列表solr全量抽数</a></li><li><a href="#1113_solr_31">1.1.1.3 统一视图患者就诊列表solr实时抽数</a></li><li><a href="#1114_solr_38">1.1.1.4 统一视图患者基本信息solr全量抽数</a></li><li><a href="#1115_solr_40">1.1.1.5 统一视图患者基本信息solr实时抽数</a></li></ul><li><a href="#112_tomcat_44">1.1.2 tomcat</a></li><ul><li><a href="#1121__56">1.1.2.1 安装步骤</a></li><li><a href="#1122_tomcat_68">1.1.2.2 tomcat中的统一视图</a></li></ul><li><a href="#113_solr_73">1.1.3 solr</a></li><ul><li><a href="#1131_solr_77">1.1.3.1 solr管理页面</a></li><li><a href="#1132_solr_85">1.1.3.2 solr的一些概念</a></li><ul><li><a href="#11321_collection_86">1.1.3.2.1 collection</a></li><li><a href="#11322_core_95">1.1.3.2.2 core（了解）</a></li><li><a href="#11323_Shard__97">1.1.3.2.3 Shard （了解）</a></li><li><a href="#11324__Replica_100">1.1.3.2.4  Replica（了解）</a></li></ul><li><a href="#1134__103">1.1.3.4 用页面进行管理</a></li><ul><li><a href="#11341__104">1.1.3.4.1 查询</a></li><li><a href="#11342__110">1.1.3.4.2 删除</a></li></ul></ul><li><a href="#114_hbase_119">1.1.4 hbase</a></li><li><a href="#115_zookeeper_126">1.1.5 zookeeper（了解）</a></li><li><a href="#116_kafka_135">1.1.6 kafka(了解）</a></li><li><a href="#117_spark_140">1.1.7 spark（了解）</a></li></ul><li><a href="#12__144">1.2 硬件架构</a></li></ul><li><a href="#2__152">2. 安装</a></li><ul><li><a href="#21_hdrciv_158">2.1 安装hdr-civ包</a></li><ul><li><a href="#211__159">2.1.1 找到配置文件</a></li><li><a href="#212_hbaseproperties_164">2.1.2 修改hbase.properties</a></li><li><a href="#213_solrproperties_167">2.1.3 修改solr.properties</a></li><li><a href="#214_jdbcproperties_170">2.1.4 修改jdbc.properties</a></li><li><a href="#216_mysql_174">2.1.6 在mysql库中建表</a></li></ul><li><a href="#22_restserver_178">2.2 安装restserver包</a></li><ul><li><a href="#221__179">2.2.1 找到配置文件</a></li><li><a href="#222__182">2.2.2 下载集群配置文件</a></li><li><a href="#223_hbaseproperties_190">2.2.3 修改hbase.properties</a></li><li><a href="#224_solrproperties_201">2.2.4 修改solr.properties</a></li></ul><li><a href="#23_solr_205">2.3 部署solr全量抽数包</a></li><ul><li><a href="#231_collection_208">2.3.1 建立患者信息collection</a></li><ul><li><a href="#2311_solr__210">2.3.1.1 在本地生成solr 配置目录</a></li><li><a href="#2312_schemaxml_221">2.3.1.2 更新schema.xml文件</a></li><li><a href="#2313_solrconfigxml_245">2.3.1.3 更新solrconfig.xml文件</a></li><li><a href="#2314__254">2.3.1.4 创建配置实体</a></li><li><a href="#2315_collection_259">2.3.1.5 创建collection</a></li><li><a href="#2316__265">2.3.1.6 创建失败时的补救措施</a></li></ul><li><a href="#232_solr_289">2.3.2 部署solr患者信息全量抽数包</a></li><ul><li><a href="#2321__290">2.3.2.1 找到配置文件</a></li><li><a href="#2322_hadoopproperties_293">2.3.2.2 修改hadoop.properties</a></li><li><a href="#2323_hdfssitexmlhbasesitexml_299">2.3.2.3 替换集群配置文件hdfs-site.xml和hbase-site.xml</a></li><li><a href="#2324_hbaseproperties_300">2.3.2.4 修改hbase.properties</a></li><li><a href="#2325__304">2.3.2.5 修改启动脚本</a></li></ul><li><a href="#233_solrcollection_307">2.3.3 建立solr患者就诊collection</a></li><ul><li><a href="#2331_solr__309">2.3.3.1 生成solr 配置目录</a></li><li><a href="#2332_sechemaxml_314">2.3.3.2 配置sechema.xml文件</a></li><li><a href="#2333__362">2.3.3.3 创建配置实体</a></li><li><a href="#2334_collection_366">2.3.3.4 创建collection</a></li></ul><li><a href="#234_solr_372">2.3.4 部署solr患者就诊全量抽数包</a></li><ul><li><a href="#2341__373">2.3.4.1 找到配置文件</a></li><li><a href="#2342_hadoopproperties_376">2.3.4.2 修改hadoop.properties</a></li><li><a href="#2343_hbaseproperties_382">2.3.4.3 修改hbase.properties</a></li><li><a href="#2344_hdfssitexmlhbasesitexml_384">2.3.4.4 替换集群配置文件hdfs-site.xml和hbase-site.xml</a></li><li><a href="#2345__385">2.3.4.5 修改启动脚本</a></li><li><a href="#2346__398">2.3.4.6 就诊列表抽数查错指导</a></li><ul><li><a href="#23461_spark_402">2.3.4.6.1 spark定位问题</a></li><li><a href="#23462_hive_409">2.3.4.6.2 hive查看数据问题</a></li></ul></ul></ul><li><a href="#24_solr_424">2.4 部署solr实时抽数包</a></li><ul><li><a href="#241_KeyValue_Store_Indexersolrcollection_431">2.4.1 设置Key-Value Store Indexer实时更新solr患者基本信息collection</a></li><ul><li><a href="#2411_HDR_PATIENT_432">2.4.1.1 给HDR_PATIENT表开启复制功能</a></li><li><a href="#2412__KeyValue_Store_Indexer__452">2.4.1.2 上传 Key-Value Store Indexer 配置</a></li><li><a href="#2413__457">2.4.1.3 注册服务</a></li><li><a href="#2414__478">2.4.1.4 添加一条数据测试</a></li></ul><li><a href="#242__sparksolrcollection_494">2.4.2  使用spark实时更新solr患者就诊列表collection</a></li><ul><li><a href="#2421_spark_496">2.4.2.1 使用spark执行</a></li><li><a href="#2422_edi_501">2.4.2.2 配置edi程序</a></li></ul></ul><li><a href="#25__504">2.5 统一视图嵌入第三方</a></li></ul><li><a href="#3__525">3. 视图</a></li><ul><li><a href="#31__532">3.1 查错指导</a></li><li><a href="#32__540">3.2 系统设置</a></li><ul><li><a href="#321_logo_551">3.2.1 患者统一视图logo信息</a></li><li><a href="#322_solrcollection_562">3.2.2 solr的collection配置</a></li><li><a href="#323__564">3.2.3 权限配置</a></li><ul><li><a href="#3231__571">3.2.3.1 获取左侧用户列表</a></li><li><a href="#3232__573">3.2.3.2 未单击用户列表时获取权限</a></li><li><a href="#3233__624">3.2.3.3 左侧用户列表单击部门时获取权限</a></li><li><a href="#3234__631">3.2.3.4 左侧用户列表单击用户时获取权限</a></li></ul><li><a href="#324__634">3.2.4 系统新增参数功能</a></li></ul><li><a href="#33__641">3.3 患者列表</a></li><ul><li><a href="#331__645">3.3.1 查询逻辑</a></li><li><a href="#332__650">3.3.2 更改患者末次就诊显示配置（暂时废弃）</a></li><li><a href="#333__654">3.3.3 患者列表查询条件显示配置</a></li><li><a href="#334__666">3.3.4 患者列表表头配置</a></li><li><a href="#335__670">3.3.5 点击查看默认打开的页面</a></li><li><a href="#336_solr_674">3.3.6 solr日期配置</a></li><li><a href="#337__680">3.3.7 患者列表模糊查询</a></li><li><a href="#338__684">3.3.8 科室查询配置</a></li><li><a href="#339__688">3.3.9 根据出生日期查询配置</a></li><li><a href="#3310__690">3.3.10 查看患者详情的权限问题</a></li></ul><li><a href="#34__701">3.4 就诊视图</a></li><ul><li><a href="#341__704">3.4.1 全局信息</a></li><ul><li><a href="#3411_visit_type_codepatient_id_705">3.4.1.1 获取所有的visit_type_code|patient_id组合</a></li><li><a href="#3412__711">3.4.1.2 获取就诊视图全局配置</a></li><ul><li><a href="#34121__735">3.4.1.2.1 检验报告详情显示列配置</a></li><li><a href="#34122__739">3.4.1.2.2 是否开启就诊试图科室筛选</a></li><li><a href="#34123__743">3.4.1.2.3 就诊视图访问权限</a></li><li><a href="#34124__749">3.4.1.2.4 新增模块并开放</a></li><li><a href="#34125__789">3.4.1.2.5 是否隐藏就诊次</a></li><li><a href="#34126__792">3.4.1.2.6 获取医嘱状态列表</a></li><li><a href="#34127__797">3.4.1.2.7 是否显示手术列表</a></li><li><a href="#34128__804">3.4.1.2.8 手术麻醉单显示配置</a></li><li><a href="#34129__809">3.4.1.2.9 护理单表头设置</a></li><li><a href="#34130__813">3.4.1.3.0 费用表格头部设置</a></li><li><a href="#34131__827">3.4.1.3.1 末次就诊栏是否跟随就诊次变化</a></li><li><a href="#34132__830">3.4.1.3.2 卡片默认查询时间范围</a></li></ul></ul><li><a href="#342__835">3.4.2 末次就诊信息</a></li><ul><li><a href="#32421__836">3.2.4.2.1 末次就诊涉及到的配置</a></li><li><a href="#32422__863">3.2.4.2.2 对应接口</a></li><li><a href="#32423__869">3.2.4.2.3 末次就诊数据查询逻辑：</a></li><ul><li><a href="#324231__870">3.2.4.2.3.1 查询就诊记录</a></li><li><a href="#324232__892">3.2.4.2.3.2 记录去重</a></li><li><a href="#324233__896">3.2.4.2.3.3 部分数据特殊处理</a></li></ul></ul><li><a href="#343__944">3.4.3 就诊列表和就诊卡片</a></li><ul><li><a href="#3431__945">3.4.3.1 对应接口</a></li><li><a href="#3432__948">3.4.3.2 涉及到的配置</a></li><li><a href="#3433__952">3.4.3.3 查询逻辑</a></li><ul><li><a href="#34331_962">3.4.3.3.1查询出所有就诊记录</a></li></ul></ul><li><a href="#344__1021">3.4.4 过敏提醒</a></li><li><a href="#345__1034">3.4.5 危急值提醒</a></li><li><a href="#346__1050">3.4.6 院感提醒</a></li><li><a href="#347__1059">3.4.7 首页模块</a></li><ul><li><a href="#3471__1061">3.4.7.1 首页模块涉及的配置</a></li><li><a href="#3472__1096">3.4.7.2 首页模块对应接口：</a></li><li><a href="#3473__1101">3.4.7.3 门诊查询逻辑</a></li><li><a href="#3474__1108">3.4.7.4 住院查询逻辑</a></li></ul><li><a href="#348__1151">3.4.8 医嘱模块</a></li><ul><li><a href="#3481__1152">3.4.8.1 医嘱模块涉及的配置</a></li><li><a href="#3482__1726">3.4.8.2 医嘱模块接口</a></li><li><a href="#3483__1728">3.4.8.3 全部医嘱查询逻辑</a></li><li><a href="#3484__1746">3.4.8.4 口服用药查询逻辑</a></li><li><a href="#3485__1755">3.4.8.5 静脉注射查询逻辑</a></li><li><a href="#3486__1758">3.4.8.6 其他用药查询逻辑</a></li><li><a href="#3487__1761">3.4.8.7 检验申请查询逻辑</a></li><li><a href="#3488__1764">3.4.8.8 检查申请查询逻辑</a></li><li><a href="#3489__1767">3.4.8.9 手术查询逻辑</a></li><li><a href="#34810__1771">3.4.8.10 其他医嘱</a></li></ul><li><a href="#349__1775">3.4.9 检验报告</a></li><ul><li><a href="#3491__1776">3.4.9.1 涉及到的配置：</a></li><li><a href="#3492__1799">3.4.9.2 对应接口：</a></li><li><a href="#3493__1801">3.4.9.3 检验报告列表查询逻辑</a></li><li><a href="#3494__1816">3.4.9.4 检验报告详情查询逻辑</a></li></ul><li><a href="#3410__1830">3.4.10 检查报告</a></li><ul><li><a href="#34101__1831">3.4.10.1 涉及配置</a></li><li><a href="#34102__1850">3.4.10.2 对应接口</a></li><li><a href="#34103__1852">3.4.10.3 左侧报告列表查询逻辑</a></li><li><a href="#34104__1867">3.4.10.4 检查报告详情查询逻辑</a></li></ul><li><a href="#3411__1876">3.4.11 病理报告</a></li><ul><li><a href="#34111__1877">3.4.11.1 对应接口</a></li><li><a href="#34112__1879">3.4.11.2 涉及配置</a></li><li><a href="#34113__1890">3.4.11.3 病理报告列表查询逻辑</a></li><li><a href="#34114__1904">3.4.11.4 病理报告详情查询逻辑</a></li></ul><li><a href="#3412__1913">3.4.12 病历文书</a></li><ul><li><a href="#34121__1914">3.4.12.1 对应接口</a></li><li><a href="#34122__1917">3.4.12.2 涉及配置</a></li><li><a href="#34123__1934">3.4.12.3 病历文书列表按时间排序查询逻辑</a></li><li><a href="#34124__1947">3.4.12.4 病历文书列表按类型排序查询逻辑</a></li><li><a href="#34125__1958">3.4.12.5 病历文书详情查询逻辑</a></li></ul><li><a href="#3413__1984">3.4.13 手术记录</a></li><ul><li><a href="#34131__1985">3.4.13.1 手术列表</a></li><ul><li><a href="#341311_1987">3.4.13.1.1对应接口</a></li></ul><li><a href="#34132__1992">3.4.13.2 手术信息</a></li><ul><li><a href="#341321__1993">3.4.13.2.1 对应接口</a></li><li><a href="#341322__1995">3.4.13.2.2 涉及配置</a></li><li><a href="#341323__1999">3.4.13.2.3 术前</a></li><li><a href="#341324__2014">3.4.13.2.4 术中</a></li><li><a href="#341325__2034">3.4.13.2.5 术后</a></li></ul><li><a href="#34133__2050">3.4.13.3 手术麻醉单</a></li><ul><li><a href="#341331__2051">3.4.13.3.1 对应接口</a></li><li><a href="#341332__2053">3.4.13.3.2 涉及配置</a></li><li><a href="#341333__2065">3.4.13.3.3 查询逻辑</a></li></ul></ul><li><a href="#3414__2070">3.4.14 护理记录</a></li><ul><li><a href="#34141__2073">3.4.14.1 护理类型</a></li><li><a href="#34142__2088">3.4.14.2 护理列表</a></li><li><a href="#34143__2103">3.4.14.3 护理详情</a></li></ul><li><a href="#3415__2123">3.4.15 过敏记录</a></li><ul><li><a href="#34151__2127">3.4.15.1 过敏类型</a></li><li><a href="#34152__2141">3.4.15.2 过敏程度</a></li><li><a href="#34153__2154">3.4.15.3 过敏列表</a></li></ul><li><a href="#3416__2162">3.4.16 费用明细</a></li><ul><li><a href="#34161__2165">3.4.16.1 费用类型</a></li><li><a href="#34162__2178">3.4.16.2 费用明细列表</a></li></ul><li><a href="#3417__2205">3.4.17 临床用血</a></li><ul><li><a href="#34171__2229">3.4.17.1 输血申请</a></li><li><a href="#34172__2231">3.4.17.2 配血记录</a></li><li><a href="#34173__2234">3.4.17.3 输血记录</a></li></ul><li><a href="#3418__2237">3.4.18 血透报告</a></li><li><a href="#3419__2246">3.4.19 手术介入</a></li></ul><li><a href="#35__2256">3.5 分类视图</a></li><li><a href="#36__2260">3.6 当前视图</a></li></ul></ul></ul></div><p></p>
+<h2><a id="_1"></a>联系方式</h2>
+<p>PT-HDR研发部  余涛<br>
+微信 17695655702</p>
+<h2><a id="_5"></a>声明</h2>
+<p>本文档不适用于浙大妇保医院，部分医院的个性化需求也不包含在内。</p>
+<h2><a id="1__7"></a>1. 架构</h2>
+<h3><a id="11__8"></a>1.1 软件架构</h3>
+<h4><a id="111__9"></a>1.1.1 组件</h4>
+<h5><a id="1111__11"></a>1.1.1.1 统一视图应用</h5>
+<p><img src="https://img-blog.csdnimg.cn/e16e912c7cd0490da900a1e8ab53378c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+如图，用户通过浏览器访问统一视图过程：</p>
+<ul>
+<li>浏览器输入nginx地址（8080端口，例如：192.168.xx.xx:8080/hdr-civ）。</li>
+<li>nginx 8080 端口接收到请求，自动根据用户IP将请求转发到合适的tomcat（一般为8082端口），保证tomcat负载均衡。</li>
+<li>tomcat处理请求，并向数据源查询数据，计算后展示给用户。</li>
+<li>在3大数据源中，mysql负责存用户配置及权限数据，solr负责存储用于搜索的数据，hbase存出医院产生的患者就诊数据。</li>
+</ul>
+<h5><a id="1112_solr_18"></a>1.1.1.2 统一视图患者就诊列表solr全量抽数</h5>
+<p><img src="https://img-blog.csdnimg.cn/0da26f2be46b4ddd96a2903e7752f8f4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>简要描述图中各组件作用：</p>
+<ul>
+<li>zookeeper： 负责登记其他各组件的位置和上下线状态。抽数包配置zookeeper集群的地址后，即可从zookeeper获取正常运行的其他各组件地址，从而使用其他组件。</li>
+<li>hbase：存储数据。</li>
+<li>spark：充分利用多个服务器的硬件资源进行快速计算。</li>
+<li>hive：使用效果像mysql一样，存储数据，并利用sql语句进行计算。本质上也是利用多个服务器的硬件资源进行计算，不过效率较慢。</li>
+</ul>
+<p>全量抽数的流程：<br>
+第一步，使用脚本在hbase里新建一张表存储hive计算结果（简称为：结果表）。<br>
+第二步，通过脚本设定，使用hive组件从hbase的一些表中拿出数据计算，算出患者末次就诊记录后存到结果表中。<br>
+第三步，通过脚本设定，使用spark组件执行抽数包程序，读取结果表进行计算，以结果表为基础，快速整合散落于多张hbase表里的数据，组成患者就诊列表，存进solr里。</p>
+<h5><a id="1113_solr_31"></a>1.1.1.3 统一视图患者就诊列表solr实时抽数</h5>
+<p><img src="https://img-blog.csdnimg.cn/df2a862e2c274a9bbb6b24a6b2064d47.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+kafka：是一种消息队列，消息就是各种数据，比如mysql的一条记录便可称为一个消息。做个比喻，在超市结账时，人群排成一队，等待收银员结账，结完账的人会离开队列，当消息存进Kafka里时，也会像这样排队等待处理，处理完的消息会离队，即被删除掉。显而易见，kafka近似于一个存放临时数据的数据库。</p>
+<p>实时抽数的流程：<br>
+实时就诊的门诊就诊和入出转通过集成平台调用数据中心EDI接口存入hbase表（<code>HDR_OUT_VISIT</code>和<code>HDR_PAT_ADT</code>）和kafka中，使用sqark按抽数包程序监测kafka的topic消息，进行实时更新患者末次就诊列表的solr数据</p>
+<h5><a id="1114_solr_38"></a>1.1.1.4 统一视图患者基本信息solr全量抽数</h5>
+<p>患者基本信息的solr字段跟hbase的<code>HDR_PATIENT</code>表的字段一致，运算量不大，直接利用hadoop本身的计算功能完成数据抽取。</p>
+<h5><a id="1115_solr_40"></a>1.1.1.5 统一视图患者基本信息solr实时抽数</h5>
+<p><img src="https://img-blog.csdnimg.cn/95efce1b98c94cb392cc73d2fcea4c03.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+Key-Value Store Indexer ：用于同步hbase数据和solr的数据的索引器。<br>
+非常直接，患者基本信息solr利用索引器配置的映射关系，将hbase的字段各自映射到solr中。</p>
+<h4><a id="112_tomcat_44"></a>1.1.2 tomcat</h4>
+<p>tomcat是一个流行的web服务器，将程序包放置其中，方可处理浏览器的请求。</p>
+<p>常用命令：</p>
+<ul>
+<li>切换目录 — cd  {路径}</li>
+<li>启动tomcat服务—先切换到tomcat的bin目录，执行启动脚本 <code>./startup.sh</code></li>
+<li>停止tomcat服务----先查看tomcat的进程号(例如 <code>ps -ef|grep tomcat-8082</code>），再使用<code>kill -9 进程号</code>关闭tomcat进程。<br>
+<img src="https://img-blog.csdnimg.cn/01248983d5ce4a2c9deecf69d5bd434d.png" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/7e572f1d59cf4f5fa97d4794aec0d781.png" alt="在这里插入图片描述"></li>
+<li>查看tomcat运行时日志—使用<code>tail</code>命令查看logs/catalina.out文件即可,例如<code>tail -f ./logs/catalina.out</code>,<code>tail -f</code> 表示查看文件末尾并不断追踪</li>
+</ul>
+<h5><a id="1121__56"></a>1.1.2.1 安装步骤</h5>
+<p>官网(https://tomcat.apache.org/)下载tomcat，推荐版本（tomcat 8）<br>
+<img src="https://img-blog.csdnimg.cn/8a9912bf400b40458f6b6de91016839d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+linux下载二进制文件核心包，放置服务器上（推荐为：/usr/local/tomcat目录下），使用解压命令解压（大括号之间为需要填充字段）</p>
+<pre><code class="prism language-java">tar <span class="token operator">-</span>zxvf <span class="token operator">-</span><span class="token class-name">C</span> <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>tomcat<span class="token operator">/</span>tomcat<span class="token operator">-</span><span class="token punctuation">{</span>端口<span class="token punctuation">}</span> <span class="token punctuation">{</span>tomcat的tar包名称<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/78c977e9407c4d4897a4b10e9c1c8c67.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+解压完毕后，更改tomcat端口号：<br>
+<img src="https://img-blog.csdnimg.cn/c6b7ff6f7a8c49af9d57d8284a4bbe1c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+以上，完成tomcat的安装</p>
+<h5><a id="1122_tomcat_68"></a>1.1.2.2 tomcat中的统一视图</h5>
+<p><img src="https://img-blog.csdnimg.cn/33273300d2a4467cafd254c2aaa38d8b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+统一视图的应用包共有2个（hdr-civ.war和restserver.war），2个war包放置在tomcat的webapp目录下，启动tomcat后，将被tomcat自动识别解压出为2个同名文件夹（即启动了2个同名应用）。</p>
+<p>hdr-civ负责处理用户请求逻辑并从mysql中读取用户配置及权限，最终给用户展示页面；restserver接收hdr-civ的请求，去solr和hbase查询数据，返回给civ处理。</p>
+<h4><a id="113_solr_73"></a>1.1.3 solr</h4>
+<p>solr是一个搜索引擎，按照键值对存储数据，可以用任意字段快速搜索对应的数据。属于hadoop集群的组件，不用单独安装。<br>
+<img src="https://img-blog.csdnimg.cn/fe4881a8e61c48218e0c30aa49975138.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+如图，上半部分，集群多台服务器上安装了solr 服务，多个solr服务组合成solr cloud，应用程序直接查询solr cloud。</p>
+<h5><a id="1131_solr_77"></a>1.1.3.1 solr管理页面</h5>
+<p>进入集群管理页面,找到solr组件<br>
+<img src="https://img-blog.csdnimg.cn/304952eac8c046d6acc5fa1686549683.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+在实例中找到solr server的主机<br>
+<img src="https://img-blog.csdnimg.cn/51382a80ea834554ad8578f67b502fd2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+访问任意一台主机的sorl端口（默认：8983），即进入solr管理页面<br>
+示例地址为：http://192.168.7.110:8983/solr/<br>
+<img src="https://img-blog.csdnimg.cn/b53177dd662d4d7b8a466076df7e7412.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="1132_solr_85"></a>1.1.3.2 solr的一些概念</h5>
+<h6><a id="11321_collection_86"></a>1.1.3.2.1 collection</h6>
+<p>solr的中的collection近似于mysql的表，是一个跨越多个服务器的逻辑上的表，通过一个schema.xml文件来约束存储的字段。</p>
+<p>打开schema.xml文件：<br>
+<img src="https://img-blog.csdnimg.cn/75b3d14aa6e443098ad09381b2120201.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+文件中配置字段约束的地方<br>
+<img src="https://img-blog.csdnimg.cn/654776f579904d42be5fe1dce87524ac.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+最终存储的数据<br>
+<img src="https://img-blog.csdnimg.cn/2b6a6a96683a482bb1707c4713128a93.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="11322_core_95"></a>1.1.3.2.2 core（了解）</h6>
+<p>core是collection的组成部分，一个collection由分布在不同节点的core组成。core是每台服务器存储数据的实体部分，刚才在页面选择colleciton的时候，实际选择的是core。</p>
+<h6><a id="11323_Shard__97"></a>1.1.3.2.3 Shard （了解）</h6>
+<p>Collection的逻辑分片。每个Shard被化成一个或者多个replicas，通过选举确定哪个是Leader。</p>
+<h6><a id="11324__Replica_100"></a>1.1.3.2.4  Replica（了解）</h6>
+<p>Shard的一个拷贝。每个Replica存在于Solr的一个Core中。换句话说一个Solr Core对应着一个Replica</p>
+<h5><a id="1134__103"></a>1.1.3.4 用页面进行管理</h5>
+<h6><a id="11341__104"></a>1.1.3.4.1 查询</h6>
+<p>选中core，进入查询页面<br>
+<img src="https://img-blog.csdnimg.cn/74337585a7e243caaf4d0f29c829a0ec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+输入条件查询数据</p>
+<p><img src="https://img-blog.csdnimg.cn/ab16a3def308471abe08d80836112662.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="11342__110"></a>1.1.3.4.2 删除</h6>
+<p>进入document，选中xml格式，输入：</p>
+<pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>delete</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>query</span><span class="token punctuation">&gt;</span></span>*:*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>query</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>delete</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>commit</span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>筛选出符合条件的数据删除。<br>
+<img src="https://img-blog.csdnimg.cn/195f32ef17c9485baf5d39c9d22abfec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="114_hbase_119"></a>1.1.4 hbase</h4>
+<p>hbase是hadoop组件之一，不用单独安装。<br>
+它是一种NoSQL数据库，这意味着它不像传统的关系型数据库（如mysql）那样支持SQL作为查询语言，字段也没有强约束，仅能通过rowkey查询数据。</p>
+<p>控制台提供了hbase查询的功能，能满足大部分场景，要求hbase的rowkey按规则抽取。<code>*_PATIENT_ID</code>作为参数传入，程序将按照如图规则自动拼接rowkey进行查询。</p>
+<p><img src="https://img-blog.csdnimg.cn/1f15823b40c143e889a6f7d9d6990431.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="115_zookeeper_126"></a>1.1.5 zookeeper（了解）</h4>
+<p><img src="https://img-blog.csdnimg.cn/82db2a19f85a49d494b0a1743d732186.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/86ab76906e19459392bdecad64c5eb7a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>顾名思义 zookeeper 就是动物园管理员，他是用来管 hadoop集群的管理员；它是一个分布式的、开源的程序协调服务，是 hadoop 项目下的一个子项目。他提供的主要功能包括：配置管理、名字服务、分布式锁、集群管理。</p>
+<p>主要应用集群管理：<br>
+在分布式的集群中，经常会由于各种原因，比如硬件故障，软件故障，网络问题，有些 节点会进进出出。有新的节点加入进来，也有老的节点退出集群。这个时候，集群中其他机器需要感知到这种变化，然后根据这种变化做出对应的决策，zookeeper便可以解决这些问题。</p>
+<h4><a id="116_kafka_135"></a>1.1.6 kafka(了解）</h4>
+<p><img src="https://img-blog.csdnimg.cn/26c6a224fc86494c837f0c4bd1592115.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+一个 Kafka 服务器也称为 Broker，它接受生产者发送的消息并存入磁盘；Broker 同时服务消费者拉取分区消息的请求，返回目前已经提交的消息。使用特定的机器硬件，一个 Broker 每秒可以处理成千上万的分区和百万量级的消息。</p>
+<p>若干个 Broker 组成一个集群（Cluster），其中集群内某个 Broker 会成为集群控制器（Cluster Controller），它负责管理集群，包括分配分区到 Broker、监控 Broker 故障等。在集群内，一个分区由一个 Broker 负责，这个 Broker 也称为这个分区的 Leader；当然一个分区可以被复制到多个 Broker 上来实现冗余，这样当存在 Broker 故障时可以将其分区重新分配到其他 Broker 来负责。</p>
+<h4><a id="117_spark_140"></a>1.1.7 spark（了解）</h4>
+<p>Hadoop 已经成为了典型的大数据批量处理架构，它实现了两个强有力的开源产品:HDFS 和 MapReduce。由 HDFS 负责静态数据的存储,并通过 MapReduce 将计算逻辑分配到各数据节点进行数据计算。之后以 HDFS 和 MapReduce 为基础建立了很多项目,形成了 Hadoop 生态圈.</p>
+<p>Spark 则是类似Hadoop MapReduce的通用并行框架, 专门用于大数据量下的迭代式计算.是为了跟 Hadoop 配合而开发出来的,不是为了取代 Hadoop, Spark 运算比 Hadoop 的 MapReduce 框架快，原因是因为 Hadoop 在一次 MapReduce 运算之后,会将数据的运算结果从内存写入到磁盘中,第二次 Mapredue 运算时在从磁盘中读取数据,所以其瓶颈在2次运算间的多余 IO 消耗. Spark 则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘,所以多次运算的情况下, Spark 是比较快的. 其优化了迭代式工作负载。</p>
+<h3><a id="12__144"></a>1.2 硬件架构</h3>
+<p>推荐架构：<br>
+<img src="https://img-blog.csdnimg.cn/b7acc093a1bc40b8b265b8bc032ef8b4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+如图，分配4台服务器搭建hadoop集群，2台服务器搭载应用。客户（医院）只访问应用服务器。</p>
+<p>solr、hbase分布于存储节点服务器上<br>
+tomcat分布于应用服务器<br>
+nginx放置一台应用服务器上</p>
+<h2><a id="2__152"></a>2. 安装</h2>
+<p>安装统一视图目标为：<br>
+1、hdr-civ包和restserver能正确启动<br>
+2、利用抽数包往solr定时存储全量数据<br>
+3、利用spark程序包，实时往solr的就诊列表collection（默认名称为<code>collectioncivlist</code>）存储数据。<br>
+4、利用Key-Value Store Indexer组件，实时同步solr的患者信息collection（默认名称为<code>collpatient</code>）与hbase的患者信息表。</p>
+<h3><a id="21_hdrciv_158"></a>2.1 安装hdr-civ包</h3>
+<h4><a id="211__159"></a>2.1.1 找到配置文件</h4>
+<p>用解压软件打开hdr-civ包（例如，用360压缩打开），在<code>\WEB-INF\classes</code> 目录下，找出配置文件<br>
+<img src="https://img-blog.csdnimg.cn/8b80ed30ad7147a6bd1d8006e320260b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="212_hbaseproperties_164"></a>2.1.2 修改hbase.properties</h4>
+<p>修改地址为restserver的地址，通常restserver与hdr-civ安装在同一个tomcat中，只改动tomcat所在主机的IP地址和tomcat端口即可。<br>
+<img src="https://img-blog.csdnimg.cn/e8c6099bf3fa449199a5e8ae22a04860.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="213_solrproperties_167"></a>2.1.3 修改solr.properties</h4>
+<p>修改地址为restserver的地址，只改动tomcat所在主机的IP地址和tomcat端口即可。<br>
+<img src="https://img-blog.csdnimg.cn/b6f72406309d493c95f0de760a4a77d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="214_jdbcproperties_170"></a>2.1.4 修改jdbc.properties</h4>
+<p>统一视图的页面资源和用户要在控制台项目中进行管理，需要共用同一个mysql数据库，因此修改jdbc连接信息。<br>
+<img src="https://img-blog.csdnimg.cn/f5f151e0762e49d9bd034f1d8be1b4a2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+更改完配置之后，将hdr-civ包传入Tomcat的webapp中。</p>
+<h4><a id="216_mysql_174"></a>2.1.6 在mysql库中建表</h4>
+<p>将建表sql文件在mysql库中执行（不同的ui工具操作不一样，不再细述），建立20张表。<br>
+<img src="https://img-blog.csdnimg.cn/82a79508864d441187d265bee0805d1f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+至此，hdr-civ包准备完毕。</p>
+<h3><a id="22_restserver_178"></a>2.2 安装restserver包</h3>
+<h4><a id="221__179"></a>2.2.1 找到配置文件</h4>
+<p>打开restserver.war压缩包，找到配置文件，取出待修改。<br>
+<img src="https://img-blog.csdnimg.cn/96ca4455d5ef41d0b9eb642c4a2889bd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="222__182"></a>2.2.2 下载集群配置文件</h4>
+<p>hdfs-site.xml和hbase-site.xml两个文件作为集群的配置文件，可以从cloudera manger界面（简称cm）下载。<br>
+选中hbase,单击进入hbase管理页<br>
+<img src="https://img-blog.csdnimg.cn/830a31f1925540f8b3f4c13216557edf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+单击操作，下载客户端配置<br>
+<img src="https://img-blog.csdnimg.cn/22b06403f8ac477ab2da99f11aa03166.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+解压客户端配置，将配置文件替换进restserver包里<br>
+<img src="https://img-blog.csdnimg.cn/3b27d95d656d4eb1ba1ddbcd46085d5f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="223_hbaseproperties_190"></a>2.2.3 修改hbase.properties</h4>
+<p><img src="https://img-blog.csdnimg.cn/ab2274ca175b42f68cfeccee853f36c9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+打开cm界面的zookeeper页面<br>
+<img src="https://img-blog.csdnimg.cn/712b853be81a4959be54eda3c663db15.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+将zookeeper的主机名填入<code>hbase.zk.host</code>属性中。<br>
+打开hbase的主页<br>
+<img src="https://img-blog.csdnimg.cn/171ce4e71d134894ab81b087ccf088fb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+将2个master的主机名填入<code>hbase_master</code>属性中，端口号默认60000不变。<br>
+<code>org_oid</code>填现场的组织机构id。<br>
+<code>patient_id.start</code>和<code>patient_id.end</code>用于设置截取patient_id拼接rowkey的规则，根据现场的patient_id反转规则来填（通常截取后四位反转）。截取的子字符串从指定的<code>patient_id.start</code>开始，并扩展到索引<code>patient_id.end</code>- 1处的字符，总长度为<code>patient_id.end</code>-<code>patient_id.start</code>。索引从左向右是从0开始计数的，例如:<br>
+“hamburger”  设置start为4，end为8时，返回值是   “urge”</p>
+<h4><a id="224_solrproperties_201"></a>2.2.4 修改solr.properties</h4>
+<p><img src="https://img-blog.csdnimg.cn/b0e501960a014348abff020469cb249b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+填入zookeeper的主机名即可，其他不用动。（/solr不能去掉）<br>
+将配置文件都替换进war包中，将war包置于tomcat的webapp目录下，启动tomcat即可。</p>
+<h3><a id="23_solr_205"></a>2.3 部署solr全量抽数包</h3>
+<p>全量抽数目标分为患者信息全量和患者就诊列表全量。<br>
+部署solr全量抽数包之前，要先建立solr的患者信息collection和就诊列表collection。</p>
+<h4><a id="231_collection_208"></a>2.3.1 建立患者信息collection</h4>
+<p>在cm界面上查看solr的主机，用ssh工具连接到solr的主机。</p>
+<h5><a id="2311_solr__210"></a>2.3.1.1 在本地生成solr 配置目录</h5>
+<p>依次执行下列命令</p>
+<pre><code># 生成文件夹
+mkdir /home/solr/
+# 查看配置实体，有的现场之前可能生成过配置实体
+solrctl instancedir --list
+# 生成配置实体（有就不必执行，solrPatient是配置实体名）
+solrctl instancedir --generate /home/solr/solrPatient
+</code></pre>
+<h5><a id="2312_schemaxml_221"></a>2.3.1.2 更新schema.xml文件</h5>
+<p>在/home/solr/solrPatient/conf目录下找到schema.xml文件，使用vi指令打开（vi指令是linux基本命令，百度资料很全）。</p>
+<pre><code>vi /home/solr/solrPatient/schema.xml
+</code></pre>
+<p>在<code>&lt;fields&gt;&lt;/fields&gt;</code>的节点中新增下面内容</p>
+<pre><code>&lt;field name="PERSON_NAME" type="string" indexed="true" stored="true" /&gt; &lt;!--患者姓名--&gt;
+&lt;field name="IN_PATIENT_ID" type="string" indexed="true" stored="true" /&gt;  &lt;!--住院患者ID--&gt;
+&lt;field name="INP_NO" type="string" indexed="true" stored="true" /&gt;             &lt;!--住院号--&gt;
+&lt;field name="OUT_PATIENT_ID" type="string" indexed="true" stored="true" /&gt; &lt;!--门诊患者ID--&gt;
+&lt;field name="OUTP_NO" type="string" indexed="true" stored="true" /&gt;           &lt;!--门诊号--&gt;
+&lt;field name="EID" type="string" indexed="true" stored="true" /&gt;                     &lt;!--索引ID--&gt;
+&lt;field name="DATE_OF_BIRTH" type="string" indexed="true" stored="true" /&gt;  &lt;!--出生年月--&gt;
+&lt;field name="SEX_NAME" type="string" indexed="true" stored="true" /&gt;          &lt;!--性别--&gt;
+&lt;field name="VISIT_TYPE_CODE" type="string" indexed="true" stored="true" /&gt; &lt;!--就诊类型--&gt;
+&lt;field name="ID_CARD_NO" type="string" indexed="true" stored="true" /&gt;         &lt;!--身份证号--&gt;
+&lt;field name="BRID" type="string" indexed="true" stored="true" /&gt;         &lt;!--brid--&gt;
+&lt;field name="OID" type="string" indexed="true" stored="true" /&gt;         &lt;!--多院区OID--&gt;
+&lt;field name="GLOBLE_ID" type="string" indexed="true" stored="true" /&gt;         &lt;!--多院区间患者唯一标识GLOBLE_ID--&gt;
+</code></pre>
+<h5><a id="2313_solrconfigxml_245"></a>2.3.1.3 更新solrconfig.xml文件</h5>
+<p>修改在/home/solr/solrPatient/目录下solrconfig.xml文件，将openSearcher改为true</p>
+<pre><code>     &lt;autoCommit&gt;
+       &lt;maxTime&gt;${solr.autoCommit.maxTime:60000}&lt;/maxTime&gt;
+       &lt;openSearcher&gt;true&lt;/openSearcher&gt;
+     &lt;/autoCommit&gt;
+</code></pre>
+<h5><a id="2314__254"></a>2.3.1.4 创建配置实体</h5>
+<pre><code>solrctl instancedir --create solrPatient /home/solr/solrPatient
+</code></pre>
+<h5><a id="2315_collection_259"></a>2.3.1.5 创建collection</h5>
+<pre><code>solrctl collection --create collpatient -s 1 -r 3 -c solrPatient
+</code></pre>
+<p>至此，solr患者信息collection创建完毕，可进入solr 管理界面查看</p>
+<h5><a id="2316__265"></a>2.3.1.6 创建失败时的补救措施</h5>
+<p>查看配置实体</p>
+<pre><code>solrctl instancedir --list
+</code></pre>
+<p>先更新配置文件，再刷新solr配置</p>
+<pre><code>solrctl instancedir --update solrPatient /home/solr/solrPatient 
+solrctl collection --reload collpatient 
+</code></pre>
+<p>删除collection</p>
+<pre><code>solrctl collection --delete collpatient
+</code></pre>
+<p>删除配置实体</p>
+<pre><code>solrctl instancedir --delete solrPatient
+</code></pre>
+<h4><a id="232_solr_289"></a>2.3.2 部署solr患者信息全量抽数包</h4>
+<h5><a id="2321__290"></a>2.3.2.1 找到配置文件</h5>
+<p>用压缩软件打开hbasesolr.jar包，往下拉进度条，找到配置文件，<br>
+<img src="https://img-blog.csdnimg.cn/5f229296a6854b58b7b94e3520738c71.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2322_hadoopproperties_293"></a>2.3.2.2 修改hadoop.properties</h5>
+<p><img src="https://img-blog.csdnimg.cn/86c9762398b5497ebb9d85b05a4038e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<code>org_oid</code>、<code>patient_id.start</code>和<code>patient_id.end</code>不再赘述。<br>
+<code>zkHost</code>按格式填写zookeeper的主机。<br>
+<code>solrserverurl</code>在solr管理页面选中患者信息collection，从浏览器的url中复制即可。<br>
+<img src="https://img-blog.csdnimg.cn/de7e46053d3a44a092a1c525d77f9c61.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2323_hdfssitexmlhbasesitexml_299"></a>2.3.2.3 替换集群配置文件hdfs-site.xml和hbase-site.xml</h5>
+<h5><a id="2324_hbaseproperties_300"></a>2.3.2.4 修改hbase.properties</h5>
+<p><img src="https://img-blog.csdnimg.cn/9787403127224caeb319a0047f389b8d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+同上文一样，不再赘述。<br>
+至此，配置文件全部修改完毕，替换进包中，将抽数包和启动脚本hbasesolr.sh放进任意一台solr服务器中。</p>
+<h5><a id="2325__304"></a>2.3.2.5 修改启动脚本</h5>
+<p>将启动脚本中的路径改正为jar包放置的路径，设置定时任务每天运行脚本。<br>
+<img src="https://img-blog.csdnimg.cn/b2433ad8d925402db614ecad6e4bc4a9.png" alt="在这里插入图片描述"></p>
+<h4><a id="233_solrcollection_307"></a>2.3.3 建立solr患者就诊collection</h4>
+<p>在2.3.1中的主机中，执行命令，以便管理</p>
+<h5><a id="2331_solr__309"></a>2.3.3.1 生成solr 配置目录</h5>
+<pre><code>solrctl instancedir --generate /home/solr/civlist
+</code></pre>
+<h5><a id="2332_sechemaxml_314"></a>2.3.3.2 配置sechema.xml文件</h5>
+<p>打开文件进行编辑</p>
+<pre><code>vi /home/solr/civlist/conf/sechema.xml
+</code></pre>
+<p>在<code>&lt;fields&gt;&lt;/fields&gt;</code>的节点中新增下面内容</p>
+<pre><code>&lt;field name="EID" type="string" indexed="true" stored="true" /&gt; &lt;!--EID--&gt;
+&lt;field name="IN_PATIENT_ID" type="string" indexed="true" stored="true" /&gt;       &lt;!--住院患者ID--&gt;
+&lt;field name="OUT_PATIENT_ID" type="string" indexed="true" stored="true" /&gt;      &lt;!--门诊患者ID--&gt;
+&lt;field name="VISIT_ID" type="string" indexed="true" stored="true" /&gt;    &lt;!--就诊次数--&gt;
+&lt;field name="PERSON_NAME" type="string" indexed="true" stored="true" /&gt; &lt;!--姓名--&gt;
+&lt;field name="SEX_NAME" type="string" indexed="true" stored="true" /&gt;    &lt;!--性别--&gt;
+&lt;field name="SEX_CODE" type="string" indexed="true" stored="true" /&gt;    &lt;!--性别CODE--&gt;
+&lt;field name="AGE_VALUE" type="string" indexed="true" stored="true" /&gt;   &lt;!--年龄--&gt;
+&lt;field name="AGE_NUM" type="int" indexed="true" stored="true" /&gt;        &lt;!--年龄值--&gt;
+&lt;field name="AGE_UNIT" type="string" indexed="true" stored="true" /&gt;    &lt;!--年龄单位--&gt;
+&lt;field name="DATE_OF_BIRTH" type="string" indexed="true" stored="true" /&gt;       &lt;!--出生年月--&gt;
+&lt;field name="ID_CARD_NO" type="string" indexed="true" stored="true" /&gt;  &lt;!--身份证号--&gt;
+&lt;field name="VISIT_TYPE_CODE" type="string" indexed="true" stored="true" /&gt;     &lt;!--就诊类型CODE--&gt;
+&lt;field name="VISIT_TYPE_NAME" type="string" indexed="true" stored="true" /&gt;     &lt;!--就诊类型--&gt;
+&lt;field name="INP_NO" type="string" indexed="true" stored="true" /&gt;      &lt;!--住院号--&gt;
+&lt;field name="OUT_NO" type="string" indexed="true" stored="true" /&gt;      &lt;!--门诊号--&gt;
+&lt;field name="DEPT_ADMISSION_TO_NAME" type="string" indexed="true" stored="true" /&gt;      &lt;!--入院科室，门诊就诊科室--&gt;
+&lt;field name="DEPT_ADMISSION_TO_CODE" type="string" indexed="true" stored="true" /&gt;      &lt;!--入院科室，门诊就诊科室CODE--&gt;
+&lt;field name="DEPT_DISCHARGE_FROM_NAME" type="string" indexed="true" stored="true" /&gt;    &lt;!--出院科室--&gt;
+&lt;field name="DEPT_DISCHARGE_FROM_CODE" type="string" indexed="true" stored="true" /&gt;    &lt;!--出院科室CODE--&gt;
+&lt;field name="ADMISSION_TIME" type="date" indexed="true" stored="true" /&gt;        &lt;!--入院时间，门诊就诊时间--&gt;
+&lt;field name="DISCHARGE_TIME" type="date" indexed="true" stored="true" /&gt;        &lt;!--出院时间--&gt;
+&lt;field name="IN_HOSPITAL_DAYS" type="string" indexed="true" stored="true" /&gt;    &lt;!--住院天数--&gt;
+&lt;field name="BED_LABEL" type="string" indexed="true" stored="true" /&gt;   &lt;!--床号--&gt;
+&lt;field name="DISCHARGE_BED" type="string" indexed="true" stored="true" /&gt;       &lt;!--出院床号--&gt;
+&lt;field name="DIAGNOSIS_CODE" type="string" indexed="true" stored="true" /&gt;      &lt;!--诊断编码--&gt;
+&lt;field name="DIAGNOSIS_NAME" type="string" indexed="true" stored="true" /&gt;      &lt;!--诊断名称--&gt;
+&lt;field name="HOME_PHONE" type="string" indexed="true" stored="true" /&gt;  &lt;!--联系电话--&gt;
+&lt;field name="HOSPITAL_STATE" type="string" indexed="true" stored="true" /&gt;      &lt;!--住院状态--&gt;
+&lt;field name="REQUEST_DOCTOR" type="string" indexed="true" stored="true" /&gt;      &lt;!--三级经治医师--&gt;
+&lt;field name="PARENT_DOCTOR" type="string" indexed="true" stored="true" /&gt;       &lt;!--三级上级医师--&gt;
+&lt;field name="SUPER_DOCTOR" type="string" indexed="true" stored="true" /&gt;        &lt;!--三级主任医师--&gt;
+&lt;field name="TMP_HOUSEMAN" type="string" indexed="true" stored="true" /&gt;        &lt;!--实习医生姓名或进修医生姓名--&gt;
+&lt;field name="IN_OUT_NOS" indexed="true"  stored="true" type="string" multiValued="true"/&gt;
+&lt;field name="DEPT" type="string" indexed="true" stored="true" /&gt;        &lt;!--科室--&gt;
+&lt;field name="DISTRICT_ADMISSION_TO_CODE" type="string" indexed="true" stored="true" /&gt;  &lt;!--院区--&gt;
+&lt;field name="DISTRICT_ADMISSION_TO_NAME" type="string" indexed="true" stored="true" /&gt;  &lt;!--院区--&gt;
+&lt;field name="OID" type="string" indexed="true" stored="true" /&gt; &lt;!--OID院区--&gt;
+&lt;field name="GLOBLE_ID" type="string" indexed="true" stored="true" /&gt;   &lt;!--院区间患者唯一标识GLOBLE_ID--&gt; 
+</code></pre>
+<h5><a id="2333__362"></a>2.3.3.3 创建配置实体</h5>
+<pre><code> solrctl instancedir --create solrcivlist /home/solr/civlist
+</code></pre>
+<h5><a id="2334_collection_366"></a>2.3.3.4 创建collection</h5>
+<pre><code>solrctl collection --create collectioncivlist -c solrcivlist -s 1 -r 3 -m 3
+</code></pre>
+<p>至此，患者就诊collection创建完毕，可在管理页面查看<br>
+创建失败时，补救命令参照2.3.1.6节</p>
+<h4><a id="234_solr_372"></a>2.3.4 部署solr患者就诊全量抽数包</h4>
+<h5><a id="2341__373"></a>2.3.4.1 找到配置文件</h5>
+<p>用压缩软件打开hbasesolrV2_full.jar 包，往下拉进度条，找到配置文件。<br>
+<img src="https://img-blog.csdnimg.cn/562c32b8111d46d3afa0b284fc06150f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2342_hadoopproperties_376"></a>2.3.4.2 修改hadoop.properties</h5>
+<p><img src="https://img-blog.csdnimg.cn/c932b509d19942a3ae44de634fbdd753.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+重复项不再赘述.<br>
+kakfa配置中的zk_list按格式填zookeeper主机；<br>
+broker_list按格式填kafka的broker组件所在主机<br>
+<img src="https://img-blog.csdnimg.cn/1614df9e01c74785be3cb074229d62c4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2343_hbaseproperties_382"></a>2.3.4.3 修改hbase.properties</h5>
+<p>同上文一样，不再赘述</p>
+<h5><a id="2344_hdfssitexmlhbasesitexml_384"></a>2.3.4.4 替换集群配置文件hdfs-site.xml和hbase-site.xml</h5>
+<h5><a id="2345__385"></a>2.3.4.5 修改启动脚本</h5>
+<p>打开<code>patlist_proc.sh</code>脚本，内容中echo是打印命令，忽略不看的话，可以清晰的发现脚本由3部分组成：<br>
+第一步，使用hbase命令建立一张hbase表；<br>
+第二步，使用hive命令处理sql脚本<br>
+第三步，使用spark命令处理刚刚配置好的就诊列表抽数包<br>
+<img src="https://img-blog.csdnimg.cn/29de0c40caab4ff38f7f162a6cb82e40.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+默认情况，门诊和住院使用统一的patient_id，直接更改hive命令的文件路径指向hive_patlist_data.sql；如果现场，门诊和住院的patient_id不一致，需要使用hive_patlist_data_isolation.sql文件，现场人员需要点开对应的sql文件，在插入结果表时，修改rowkey的反转规则，如下图：<br>
+<img src="https://img-blog.csdnimg.cn/28c28fa496f54f38981f465a8860a0b7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>按情况修改patlist_proc.sh脚本。<br>
+修改spark命令指向配置好的就诊列表抽数包，上面截图的第三部分。<br>
+将改好的抽数包，sql文件，启动脚本上传至服务器，设置定时任务跑脚本。<br>
+<img src="https://img-blog.csdnimg.cn/3569c73d784f49c09cf08a88979e4e83.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2346__398"></a>2.3.4.6 就诊列表抽数查错指导</h5>
+<p>根据抽数脚本可以明白，报错原因可能有2点：hive计算问题和spark计算问题。<br>
+先通过控制台打开脚本中新建的hbase表。<img src="https://img-blog.csdnimg.cn/be70dcf7955a4f66815692852da5f987.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+观察数据，若无问题则是spark计算问题；若数据不符预期，则打开sql文件，在hive中观测每一段sql的执行结果。</p>
+<h6><a id="23461_spark_402"></a>2.3.4.6.1 spark定位问题</h6>
+<p>当确定问题在spark计算结果不合预期时，打开cm界面，进入spark主页，打开web ui<br>
+<img src="https://img-blog.csdnimg.cn/093b2e4522ea4ff5a5a1a61ff5b99a0b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+可以看到，访问的url默认是主机名加端口，如果打不开改页面，检查host文件有没有配置服务器主机名（配置host文件属于基本，百度资料很多）<br>
+<img src="https://img-blog.csdnimg.cn/26b510ca13d240e28f9ed985476f9e74.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+在页面中选中脚本执行的app id，点进去，再点击Executors，查看logs中的err日志，根据日志定位问题。<br>
+<img src="https://img-blog.csdnimg.cn/b5ad304529014805b1ad8e37dd726e12.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="23462_hive_409"></a>2.3.4.6.2 hive查看数据问题</h6>
+<p>若hive计算出的TMP_CIV_PATLIST表中数据不合预期，进入cm界面中的hue主页，打开 web ui<br>
+<img src="https://img-blog.csdnimg.cn/6bf5b96f96694aa889af1ed14539b1e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>登陆进入hue ui界面后，左侧是数据库，右侧选择hive的查询界面<br>
+<img src="https://img-blog.csdnimg.cn/6b74895f015b4b5ea1440a1d3667dfcb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+打开sql文件，可以发现sql文件大致分为三步：<br>
+第一步，建立hbase的外表，即hive中的表跟hbase的表数据实时同步。再将外表转换成hive内表，加快计算速度。<br>
+第二步，用内表进行数据计算。<br>
+第三步，将计算结果按情况插入hbase外表中（对应TMP_CIV_PATLIST）</p>
+<p>建立外表的语句形如下图。<br>
+<img src="https://img-blog.csdnimg.cn/26a3e7b2410844bca2abb5e6f33e4d8f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+利用hue的hive查询功能，分步执行计算过程，观察定位问题</p>
+<h3><a id="24_solr_424"></a>2.4 部署solr实时抽数包</h3>
+<p>实时solr同样区分患者信息和就诊列表。<br>
+实时更新患者统一视图的逻辑如下：<br>
+1.实时患者基本信息和患者主索引通过集成平台调用数据中心EDI接口存入HDR_PATIENT， 并设置发实时队列kafka<br>
+2.通过Key-Value Store Indexer实时设置HDR_PATIENT的collpatient进行实时更新solr<br>
+3.实时就诊的门诊就诊和入出转通过集成平台调用数据中心EDI接口存入HDR_OUT_VISIT和HDR_PAT_ADT，并设置发实时队列kafka<br>
+4.部署sqark程序监测kafka的topic消息，进行实时更新患者末次就诊列表的solr数据</p>
+<h4><a id="241_KeyValue_Store_Indexersolrcollection_431"></a>2.4.1 设置Key-Value Store Indexer实时更新solr患者基本信息collection</h4>
+<h5><a id="2411_HDR_PATIENT_432"></a>2.4.1.1 给HDR_PATIENT表开启复制功能</h5>
+<p>先进入hbase shell</p>
+<pre><code>hbase shell
+</code></pre>
+<p>在shell里查看HDR_PATIENT表结构</p>
+<pre><code>describe 'HDR_PATIENT'
+</code></pre>
+<p>若结果中，<code>REPLICATION_SCOPE</code>的值不满足<code>REPLICATION_SCOPE =&gt; 1</code>，表示未开启复制功能。<br>
+更改表</p>
+<pre><code>disable 'HDR_PATIENT'
+alter 'HDR_PATIENT',{NAME =&gt; 'cf', REPLICATION_SCOPE =&gt; 1}
+enable 'HDR_PATIENT'
+</code></pre>
+<h5><a id="2412__KeyValue_Store_Indexer__452"></a>2.4.1.2 上传 Key-Value Store Indexer 配置</h5>
+<p>打开HDR_PATINET.conf文件，可以看到mappings中即为hbase到solr的字段映射，如有缺失可自行补充。<br>
+<img src="https://img-blog.csdnimg.cn/15225047cde34943bd3f1207c54beb00.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+打开HDR_PATIENT.xml文件，将路径指向刚刚conf文件，<strong>一起上传至安装有Key-Value Store Indexer的服务器。</strong><br>
+<img src="https://img-blog.csdnimg.cn/eb5c15960a344db4aa59833ed8cb0113.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="2413__457"></a>2.4.1.3 注册服务</h5>
+<p>现场记得根据情况修改命令中的zookeeper地址。<br>
+注册服务</p>
+<pre><code> hbase-indexer add-indexer  \
+--name HDR_PATIENT  \
+--indexer-conf /home/solr/solrPatient/HDR_PATIENT.xml \
+--connection-param solr.zk=hadoop04:2181,hadoop03:2181/solr  \
+--connection-param solr.collection=collpatient \
+--zookeeper hadoop02:2181,hadoop03:2181,hadoop04:2181
+</code></pre>
+<p>查看实时索引器</p>
+<pre><code>  hbase-indexer list-indexers -dump --zookeeper hadoop02:2181,hadoop03:2181,hadoop04:2181
+</code></pre>
+<p>如报错，删除实时索引</p>
+<pre><code>  hbase-indexer delete-indexer -n HDR_PATIENT --zookeeper  hadoop02:2181,hadoop03:2181,hadoop04:2181
+</code></pre>
+<h5><a id="2414__478"></a>2.4.1.4 添加一条数据测试</h5>
+<p>进入hbase命令</p>
+<pre><code>hbase shell
+</code></pre>
+<p>添加数据</p>
+<pre><code>put 'HDR_PATIENT','12345678901','cf:IN_PATIENT_ID' ,'12345678901'
+</code></pre>
+<p>添加完需要在hdr控制台和solr查询，验证结果<br>
+删除数据</p>
+<pre><code>deleteall 'HDR_PATIENT','12345678901'
+</code></pre>
+<h4><a id="242__sparksolrcollection_494"></a>2.4.2  使用spark实时更新solr患者就诊列表collection</h4>
+<p>复制一份患者就诊列表的全量抽数包，改名为hbasesolrV2_realtime.jar</p>
+<h5><a id="2421_spark_496"></a>2.4.2.1 使用spark执行</h5>
+<p>注意命令中的路径，该jar包执行起来永不停止，持续监听kafka</p>
+<pre><code>spark-submit --class com.goodwill.hdr.cdssutil.solrsync.civ.v2.CIVPatListPatientAddV2 --master yarn --deploy-mode cluster --executor-memory 3g --driver-memory 2g --num-executors 4 --executor-cores 2 /home/realtime/hbasesolrV2_realtime.jar
+</code></pre>
+<h5><a id="2422_edi_501"></a>2.4.2.2 配置edi程序</h5>
+<p>打开 tomcat 中 edi程序 ，配置solr.properties中的 <code>kafka.switch = true</code><br>
+现场人员在实时消息中添加<code>&lt;kafka&gt;true&lt;/kafka&gt;</code></p>
+<h3><a id="25__504"></a>2.5 统一视图嵌入第三方</h3>
+<p>患者id传参</p>
+<pre><code>http://ip:端口号/项目名称/civ/jsp/categoryView/categoryView.jsp/rpc?username=用户名&amp;patient_id=患者号&amp;visit_id=就诊次&amp;visit_type=就诊类型&amp;way=嵌入方式
+</code></pre>
+<p>url参数说明：</p>
+<pre><code> username：用户名，必填
+ visit_type：患者就诊类型标识，必填（01 门诊，02 住院，03 体检）
+ patient_id：患者唯一标识，必填
+ visit_id：就诊次数，选填
+ way：em隐藏整个头部；en隐藏切换患者功能
+</code></pre>
+<p>身份证传参</p>
+<pre><code>http://171.161.88.24:8083/hdrciv/indexView.jsp/rpc?username=admin&amp;idCardNo=420923197607130455&amp;personName=褚国成
+</code></pre>
+<h2><a id="3__525"></a>3. 视图</h2>
+<p>因编辑器对特殊符号的处理，此节做出约定：<br>
+符号约定----竖线："|"  ， 英文逗号：","   ， 占位符："#{被替换的字符串}"，正斜杠："/"，英文分号：";"<br>
+配置约定----无特别说明的话，所有配置都在页面中进行，并最终存到mysql库中civ_config表中。<br>
+json约定----所有json格式的配置均是经过<strong>压缩成一行</strong>（找一个json网站在线压缩）后存储的<br>
+<code>Filter</code>配置格式约定—所有的<code>xxxFilter</code>配置，格式为：<code>#{字段}|操作符|值</code></p>
+<h3><a id="31__532"></a>3.1 查错指导</h3>
+<p>打开浏览器开发者工具（大多数浏览器快捷键为F12）<br>
+<img src="https://img-blog.csdnimg.cn/374888971f134cb4a3bbf05cd9145c20.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+前端报错会显示在控制台上；<br>
+选中网络下的fetch/xhr，可以看到前端调用的后端接口，以及请求、响应信息。<br>
+<img src="https://img-blog.csdnimg.cn/e2781023950f45fdb3e96ffdc7cce91c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+表单数据即为前端向后端传的参数，预览里即后端响应数据，这些是定位错误的重要依据。</p>
+<h3><a id="32__540"></a>3.2 系统设置</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">NOTICE_SWITCH</td>
+<td align="center">1–启动；0–禁用</td>
+<td align="center">是否启用通知</td>
+</tr>
+<tr>
+<td align="center">NOTICE_CONTENT</td>
+<td align="center">以竖线分隔的字符串</td>
+<td align="center">通知内容列表</td>
+</tr>
+<tr>
+<td align="center">CIV_ADMIN</td>
+<td align="center">管理员用户编码，默认值：admin</td>
+<td align="center">更改管理员时使用，只能有一个管理员</td>
+</tr>
+<tr>
+<td align="center">StartUse_OrderClose</td>
+<td align="center">true或false</td>
+<td align="center">是否启用闭环</td>
+</tr>
+<tr>
+<td align="center">CIV_CATEGARY_ORDER_SHOW_CONFIG</td>
+<td align="center">1-开启；0-禁用</td>
+<td align="center">是否隐藏医嘱相关的table操作列</td>
+</tr>
+</tbody>
+</table><p>通知功能示例<br>
+<img src="https://img-blog.csdnimg.cn/65de5d7b8a4d41519664070f6d25b082.png" alt="在这里插入图片描述"></p>
+<h4><a id="321_logo_551"></a>3.2.1 患者统一视图logo信息</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">IF_LOGO_SWITCH</td>
+<td align="center">true或false</td>
+<td align="center">是否切换使用自定义logo</td>
+</tr>
+<tr>
+<td align="center">HOSPITAL_LOGO_FILE_NAME</td>
+<td align="center">文件名</td>
+<td align="center">logo图片文件名</td>
+</tr>
+<tr>
+<td align="center">HOSPITAL_LOGO_NAME</td>
+<td align="center">医院的名称</td>
+<td align="center">logo对应的医院名称</td>
+</tr>
+<tr>
+<td align="center">ALLERGY_FILTER_SWITCH</td>
+<td align="center">false：不展示，true：展示</td>
+<td align="center">过敏程度过滤条件是否在页面展示</td>
+</tr>
+<tr>
+<td align="center">PATIENT_LIST_SWITCH</td>
+<td align="center">false：不展示，true：展示</td>
+<td align="center">切换患者按钮展示</td>
+</tr>
+</tbody>
+</table><p>将logo图片放置于war包的default/images目录下<br>
+<img src="https://img-blog.csdnimg.cn/4eac86a90d4944f19e01ad421371d147.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="322_solrcollection_562"></a>3.2.2 solr的collection配置</h4>
+<p><img src="https://img-blog.csdnimg.cn/5935973c86ac4cfc8b27f8a86cfa923b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="323__564"></a>3.2.3 权限配置</h4>
+<p>管理员用户固定开启就诊视图和分类视图，其他视图根据相关配置决定；<br>
+非管理员用户，根据mysql中存储的用户的权限判断各视图开启状态及展示内容<br>
+<img src="https://img-blog.csdnimg.cn/f15f8cbbb39542479932b7088e76ec6d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+权限页面会根据不同用户和不同部门进行变化<br>
+对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/99c7af3098bd4e0491bb677a70e4be30.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="3231__571"></a>3.2.3.1 获取左侧用户列表</h5>
+<p>对应接口<code>power_getUserList</code>，从<code>security_user</code>表中查出用户和部门，该表由控制台项目维护。</p>
+<h5><a id="3232__573"></a>3.2.3.2 未单击用户列表时获取权限</h5>
+<p>对应接口<code>power_getPowerConfigByUser</code></p>
+<p>刚进入权限页面未单击用户列表时，默认展示的是管理员的权限视图。</p>
+<p>先读取各视图、模块对应的配置项获取其中的权限（其中就诊视图和分类视图是固定开启的）。如果下列配置存在有效值，则使用一个列表记录对应视图、模块的类型。</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_CATEGORY_VALUE</td>
+<td align="center"><strong>各模块编码</strong>，用正斜杠分隔</td>
+<td align="center">分类视图访问权限，存在默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">CIV_VISIT_VALUE</td>
+<td align="center"><strong>各模块编码</strong>，用正斜杠分隔</td>
+<td align="center">就诊视图访问权限，存在默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">CIV_CURRENT_VALUE</td>
+<td align="center">current-开启；其他字符-关闭</td>
+<td align="center">是否开启当前视图</td>
+</tr>
+<tr>
+<td align="center">CIV_MEDICAL_VALUE</td>
+<td align="center">medicalview-开启；其他字符-关闭</td>
+<td align="center">是否开启体检视图</td>
+</tr>
+<tr>
+<td align="center">CIV_SPECIALTY_VALUE</td>
+<td align="center">specialty-开启；其他字符-关闭</td>
+<td align="center">是否开启专科视图</td>
+</tr>
+<tr>
+<td align="center">CIV_SPECIALTYTIMEAXIS_VALUE</td>
+<td align="center">specialtytimeaxis-开启；其他字符-关闭</td>
+<td align="center">是否开启专科视图时间轴</td>
+</tr>
+<tr>
+<td align="center">CIV_TIMEAXIS_VALUE</td>
+<td align="center">timeaxis-开启；其他字符-关闭</td>
+<td align="center">是否开启时间轴</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_VALUE</td>
+<td align="center">MR_CLASS_CODE,用正斜杠分隔</td>
+<td align="center">获取病历文书类别。存在默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">CIV_PATHOLOGY_VALUE</td>
+<td align="center">EXAM_CLASS_CODE,用正斜杠分隔</td>
+<td align="center">获取病理报告类别。存在默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">CIV_EXAM_VALUE</td>
+<td align="center">EXAM_CLASS_CODE,用正斜杠分隔</td>
+<td align="center">获取检查报告类别。存在默认值，永不为空</td>
+</tr>
+</tbody>
+</table><p>遍历上一步的列表，经处理后，显示权限页面。<br>
+除就诊视图、分类视图、病理报告、病历文书、检查报告特殊处理外，其他视图权限显示大致类似下图。管理员通过勾选，可以限制其他用户能否看到相应视图。<br>
+<img src="https://img-blog.csdnimg.cn/0594bbdce2fa406cb618f64f5c2641c9.png" alt="在这里插入图片描述"><br>
+继续读取下列配置，显示就诊视图、分类视图、病理报告、病历文书、检查报告更细化的权限设置。</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_VISIT</td>
+<td align="center"></td>
+<td align="center">就诊视图的模块权限</td>
+</tr>
+<tr>
+<td align="center">CIV_CATEGORY</td>
+<td align="center"></td>
+<td align="center">分类视图的模块权限</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_TYPE</td>
+<td align="center"></td>
+<td align="center">病历文书的类型权限</td>
+</tr>
+<tr>
+<td align="center">CIV_EXAM_TYPE</td>
+<td align="center"></td>
+<td align="center">检查报告的类型权限</td>
+</tr>
+<tr>
+<td align="center">CIV_PATHOLOGY_TYPE</td>
+<td align="center"></td>
+<td align="center">病理报告的类型权限</td>
+</tr>
+</tbody>
+</table><p><code>CIV_VISIT</code>和<code>CIV_CATEGORY</code>示例，code处填模块的ID，name处填模块名称。</p>
+<pre><code>//格式： #{code},#{name};
+index_module,首页;order_module,医嘱;exam_module,检验报告;check_module,检查报告;pathology_module,病理报告;record_module,病历文书;oper_module,手术记录;nurse_module,护理记录;allergy_module,过敏记录;others_module,其他医嘱;ocl_module,医嘱闭环;web_emr_module,WEB版电子病历;hd_module,血透报告;interventionalOper_module,手术介入;
+</code></pre>
+<p><code>CIV_PATHOLOGY_TYPE</code>、<code>CIV_EXAM_TYPE</code>、<code>CIV_EMR_TYPE</code>示例，code处填<code>EXAM_CLASS_CODE</code>字段的可能值，name处填相应的名称。</p>
+<pre><code>//格式： #{code},#{name};
+PIS_NEW,病理新系统;PIS,病理科检查
+</code></pre>
+<ul>
+<li>就诊视图权限处理逻辑：<br>
+若<code>CIV_VISIT_VALUE</code>的值中包含<code>CIV_VISIT</code>的code值，则显示对应模块的勾选框。</li>
+<li>分类视图权限处理逻辑：<br>
+若<code>CIV_CATEGORY_VALUE</code>的值中包含<code>CIV_CATEGORY</code>的code值，则显示对应模块的勾选框。</li>
+<li>病历文书权限处理逻辑：<br>
+若<code>CIV_EMR_VALUE</code>的值中包含<code>CIV_EMR_TYPE</code>的code值，则显示对应类型的勾选框。<br>
+…<br>
+继续类似以上逻辑处理病理报告、检查报告。</li>
+</ul>
+<h5><a id="3233__624"></a>3.2.3.3 左侧用户列表单击部门时获取权限</h5>
+<p><img src="https://img-blog.csdnimg.cn/34fce6feb5904dceb98f865a33584985.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+如果，部门之前未配置过权限（即权限为空时），自动获取跟管理员一样的权限视图，并将该权限往mysql的civ_power_config_dept表中插入。<br>
+<img src="https://img-blog.csdnimg.cn/c9989b9ddd004545837e77b574d24f74.png" alt="在这里插入图片描述"><br>
+单击部门名称修改权限，<strong>注意不要点勾选（只单击部门名称，将修改civ_power_config_dept表，勾选之后将轮询该部门下每个用户，修改其在civ_power_config表的记录，会非常慢）</strong>。<br>
+经过修改后，新的权限记录会覆盖掉之前插入的数据，再单击部门名称，将展示部门的权限视图。</p>
+<h5><a id="3234__631"></a>3.2.3.4 左侧用户列表单击用户时获取权限</h5>
+<p><strong>单击用户名称时（不是勾选）</strong>，将尝试从mysql数据库的civ_power_config表中查询用户权限，若该用户从未配置过权限（表中无记录），则查询出该用户的部门的权限。<br>
+勾选用户后，将采用轮询的方式，修改所有勾选的用户的权限。</p>
+<h4><a id="324__634"></a>3.2.4 系统新增参数功能</h4>
+<p>新增参数即向mysql的civ_config表中插入数据，<strong>不要直接操作mysql表，会造成缓存不一致，导致配置不生效</strong>。仅在配置项填错时，可以去mysql删除对应记录。<strong>页面新增参数后，若未生效，搜索刚刚的新增的参数，做一个修改动作（随意增加再删除一个字符），配置即生效</strong><br>
+<img src="https://img-blog.csdnimg.cn/858948517fb04209a59d2d8ad57ffd20.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/0c3e742a121148bd991704d42084a7e6.png" alt="在这里插入图片描述"></p>
+<h3><a id="33__641"></a>3.3 患者列表</h3>
+<p>患者列表展示的是每个patient_id下的末次就诊记录。<br>
+其数据来源于solr的患者就诊列表。若有字段不显示，参照solr就诊列表抽数原理进行定位。<br>
+<img src="https://img-blog.csdnimg.cn/4fd62d3142664bf3bd1746a19310bede.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="331__645"></a>3.3.1 查询逻辑</h4>
+<p>第一步，先收集当前用户的部门名称（<strong>如果当前用户未配置部门，将直接报错</strong>），并根据科室查询配置决定部门名称是否作为查询条件之一。<br>
+第二步，继续拼接输入框输入的条件（影响此处的配置有：），从solr中取出数据（查询条件可以从tomcat的运行日志中查看）。<br>
+第三步，将返回结果按solr日期配置进行时间处理。若solr中<code>IN_HOSPITAL_DAYS</code>为空，则根据出院时间和入院时间计算住院天数，否则和其他字段一样，根据患者列表表头配置填充字段展示。<br>
+第四步，根据<code>CIV_MEDICAL_VALUE</code>判断体检视图是否开启，若开启，则根据身份证号查询体检表<code>HDR_MEDICAL_REPORT_INFO</code>，根据查询结果填充“是否有体检数”字段。</p>
+<h4><a id="332__650"></a>3.3.2 更改患者末次就诊显示配置（暂时废弃）</h4>
+<p>系统设置中搜索<code>PATIENT_LAST_VISIT_INFO_VIEW</code>，没有就新增<br>
+<img src="https://img-blog.csdnimg.cn/db14c12b6a184754829274835f738aa7.png" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/88388f9a907a49acab7b4d539bae7b7c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="333__654"></a>3.3.3 患者列表查询条件显示配置</h4>
+<p>修改<code>PATIENT_LIST_QUERY_VIEW</code>以更改查询条件显示<br>
+<img src="https://img-blog.csdnimg.cn/82c007e7414740f78d716f8faa27deb1.png" alt="在这里插入图片描述"><br>
+配置项值的含义</p>
+<p><img src="https://img-blog.csdnimg.cn/8fe977c42a6f44dba40a304e66ef95b8.png" alt="在这里插入图片描述"><br>
+对应的展示效果<br>
+<img src="https://img-blog.csdnimg.cn/3ee5c22c683348ffa3e89c6c71cfc51c.png" alt="在这里插入图片描述"><br>
+类型的取值：input表示输入框，select表示下拉框。<br>
+前端返回值名称从接口中查看</p>
+<p><img src="https://img-blog.csdnimg.cn/5865a43695b4435e840a15cf21b22010.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="334__666"></a>3.3.4 患者列表表头配置</h4>
+<p><code>CIV_PATIENT_COLUMN</code>的值是json格式，易读<br>
+<img src="https://img-blog.csdnimg.cn/bcdc2dc6fbad4e2180a4fc03e3e58b14.png" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/d54d3a3f48954954a10a526f036645e4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="335__670"></a>3.3.5 点击查看默认打开的页面</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_DEFAULT_PAGE</td>
+<td align="center">例如：civ/jsp/visitView/visitView.jsp</td>
+<td align="center">跳转路径</td>
+</tr>
+</tbody>
+</table><h4><a id="336_solr_674"></a>3.3.6 solr日期配置</h4>
+<p>经常有现场，solr中存储的时间跟统一视图展示的时间不一致，相差8小时，这是由于时间API采用不同的时区计时导致的。出现这种情况需手动补偿时差</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">SOLR_DATE_OPER_VALUE</td>
+<td align="center">例如：8H</td>
+<td align="center">solr时差操作值</td>
+</tr>
+<tr>
+<td align="center">SOLR_DATE_OPER</td>
+<td align="center">sub表示减，add表示加</td>
+<td align="center">时差操作</td>
+</tr>
+</tbody>
+</table><h4><a id="337__680"></a>3.3.7 患者列表模糊查询</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">PAT_LIST_QUERY_LIKE_CONFIG</td>
+<td align="center">true-启用，false-禁用</td>
+<td align="center">患者列表查询是否启用模糊查询</td>
+</tr>
+</tbody>
+</table><h4><a id="338__684"></a>3.3.8 科室查询配置</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">IS_QUERY_ALL_DEPT</td>
+<td align="center">1–查询所有科室；其他–仅查询用户的科室</td>
+<td align="center">是否查询所有科室</td>
+</tr>
+</tbody>
+</table><h4><a id="339__688"></a>3.3.9 根据出生日期查询配置</h4>
+<p><code>BIRTHDAY_DATE_SWITCH</code>必须要开启，即值必须为<code>true</code>，否则根据出生日期查询不生效。</p>
+<h4><a id="3310__690"></a>3.3.10 查看患者详情的权限问题</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">AUTHORITY_REMINDER</td>
+<td align="center">false或true</td>
+<td align="center">是否打开权限提醒</td>
+</tr>
+<tr>
+<td align="center">CIV_USER_POSITION</td>
+<td align="center">用户的职位编码，多个编码用英文逗号分隔</td>
+<td align="center">允许查看患者详情的职位</td>
+</tr>
+</tbody>
+</table><p>管理员用户拥有最大权限，可以查看所有患者详情。<br>
+打开权限提醒后，用户职位若不在<code>CIV_USER_POSITION</code>列表中，提示“您无权查看此病历”；<br>
+若用户查看自己部门以外的患者详情，提示“您正在查看他科病历，请注意保密！”。<br>
+<img src="https://img-blog.csdnimg.cn/e5dc43653f754050ac2549dd4b42d7dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3><a id="34__701"></a>3.4 就诊视图</h3>
+<p>就诊视图可以按图划分区域<br>
+<img src="https://img-blog.csdnimg.cn/562b52a8248a49fb9124e8a63ae8d04e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h4><a id="341__704"></a>3.4.1 全局信息</h4>
+<h5><a id="3411_visit_type_codepatient_id_705"></a>3.4.1.1 获取所有的visit_type_code|patient_id组合</h5>
+<p>现场环境下，门诊系统和住院系统可能采用不同的patient_id，因此通过<code>visit_type_code|patient_id</code>组合（简称<code>pid|vtype</code>）才能唯一确定一名患者。再进入就诊视图时，会自动查询所有的pid|vtype。<br>
+<img src="https://img-blog.csdnimg.cn/9cf3f73faf4f4bfd8f0c7471e436ff77.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+其查询逻辑为：<br>
+第一步，根据之前患者列表选中的末次就诊的<code>patient_id</code>和<code>visit_type_code</code>到<code>HDR_PATIENT</code>表中查询该患者的<code>EID</code>。<br>
+第二步，根据<code>EID</code>去患者基本信息collection中，查出所有的<code>pid|vtype</code>。</p>
+<h5><a id="3412__711"></a>3.4.1.2 获取就诊视图全局配置</h5>
+<p>传入当前登陆用户的用户编码，获取就诊视图配置<br>
+<img src="https://img-blog.csdnimg.cn/af1d5a660962438a864244be3be01745.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_LAB_REPORT_DETAIL_HEAD</td>
+<td align="center">json格式</td>
+<td align="center">检验报告详情显示列配置，有默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">VISIT_DEPT_SELECT_CONFIG</td>
+<td align="center">on–开启，off–关闭</td>
+<td align="center">是否开启就诊试图科室筛选</td>
+</tr>
+<tr>
+<td align="center">CIV_VISIT_VALUE</td>
+<td align="center">以正斜杠分隔的模块id</td>
+<td align="center">就诊视图访问权限，存在默认值，永不为空</td>
+</tr>
+<tr>
+<td align="center">CIV_MODULES</td>
+<td align="center">新增的模块信息</td>
+<td align="center">新增模块</td>
+</tr>
+<tr>
+<td align="center">CIV_HIDDEN_VISIT_LIST_VISITID</td>
+<td align="center">true或false</td>
+<td align="center">是否隐藏就诊次</td>
+</tr>
+<tr>
+<td align="center">CIV_ORDERSTATUS</td>
+<td align="center">医嘱状态列表</td>
+<td align="center">获取医嘱状态名称列表</td>
+</tr>
+<tr>
+<td align="center">SHOW_OPER_LIST</td>
+<td align="center">1–有，0–没有</td>
+<td align="center">是否有手术列表项</td>
+</tr>
+<tr>
+<td align="center">CIV_ANESTHESIA_CONFIG</td>
+<td align="center">名称</td>
+<td align="center">手麻表单显示名</td>
+</tr>
+<tr>
+<td align="center">CIV_NURSE_TABLE_HEAD</td>
+<td align="center">表头列表</td>
+<td align="center">护理单表头设置</td>
+</tr>
+<tr>
+<td align="center">FEE_TABLE_OUT_CHARGE_CONFIG</td>
+<td align="center">json</td>
+<td align="center">门诊费用表格头部设置</td>
+</tr>
+<tr>
+<td align="center">FEE_TABLE_IN_CHARGE_CONFIG</td>
+<td align="center">json</td>
+<td align="center">住院费用表格头部设置</td>
+</tr>
+<tr>
+<td align="center">LAB_OVER_TIME</td>
+<td align="center">true或false</td>
+<td align="center">检验是否超时</td>
+</tr>
+<tr>
+<td align="center">EXAM_OVER_TIME</td>
+<td align="center">true或false</td>
+<td align="center">检查是否超时</td>
+</tr>
+<tr>
+<td align="center">IS_EMR_DG_HTML</td>
+<td align="center">true或false</td>
+<td align="center">是否使用病例章节模板</td>
+</tr>
+<tr>
+<td align="center">SCNNAR_SHOW_WITH_VISIT</td>
+<td align="center">true或false</td>
+<td align="center">末次就诊栏是否跟随就诊次的变化而变化</td>
+</tr>
+<tr>
+<td align="center">VISIT_ORDER_ALL_SHOW_CONFIG</td>
+<td align="center">json</td>
+<td align="center">就诊视图医嘱显示列配置</td>
+</tr>
+<tr>
+<td align="center">VISIT_TIME_CHOICE_CONFIG</td>
+<td align="center">1–全部；2–近30天；3–近3个月；4–近3年；其他–近一年</td>
+<td align="center">就诊试图，卡片默认查询时间范围</td>
+</tr>
+</tbody>
+</table><h6><a id="34121__735"></a>3.4.1.2.1 检验报告详情显示列配置</h6>
+<p><code>CIV_LAB_REPORT_DETAIL_HEAD</code>影响页面<br>
+<img src="https://img-blog.csdnimg.cn/b91bf1c74b4b4a13971124b8ac95206f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/0420e030013d450aae4795eea2b55210.png" alt="在这里插入图片描述"></p>
+<h6><a id="34122__739"></a>3.4.1.2.2 是否开启就诊试图科室筛选</h6>
+<p><code>VISIT_DEPT_SELECT_CONFIG</code>影响页面</p>
+<p><img src="https://img-blog.csdnimg.cn/3501996800a04996ab20744c944b4fd6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34123__743"></a>3.4.1.2.3 就诊视图访问权限</h6>
+<p>管理员用户：配置在<code>CIV_VISIT_VALUE</code>中的模块将会开放，新增模块需要结合<code>CIV_MODULES</code>，详见3.4.1.2.4 节。<br>
+非管理员用户：根据3.2.1节的权限配置，读取mysql中相应的表，获取开放的模块。若个人的权限为空，将采用部门的权限。</p>
+<p>开放的模块<br>
+<img src="https://img-blog.csdnimg.cn/13bf6fb93b7b42eebb7ed522b09ba136.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34124__749"></a>3.4.1.2.4 新增模块并开放</h6>
+<p>第一步，配置url相关信息<br>
+在页面新增调用第三方url所需配置项，默认格式：</p>
+
+<table>
+<thead>
+<tr>
+<th>配置项编码</th>
+<th>配置项值</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SD_${系统编码}_URL</td>
+<td>调用地址</td>
+<td>http://192.168.2.202:8089/ocl/orderTrack/orderTrack.jsp/rpc?username=admin&amp;patientid=#{patientId}&amp;visitid=#{visitId}&amp;way=em</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_LINKTYPE</td>
+<td>连接类型</td>
+<td>Iframe</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_PARAM_NUM</td>
+<td>url里非固定定参数个数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_PARAMETER_FIELD1</td>
+<td>第一个参数</td>
+<td>patientId（#与url对应）</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_PARAMETER_FIELD_CONFIG1</td>
+<td>第一个参数来源</td>
+<td>IN_PATIENT_ID,HDR_IN_ORDER（#字段名,来源表）</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_PARAMETER_FIELD2</td>
+<td>第二个参数</td>
+<td>visitId</td>
+</tr>
+<tr>
+<td>SD_#{系统编码}_PARAMETER_FIELD_CONFIG2</td>
+<td>第二个参数来源</td>
+<td>VISIT_ID,HDR_IN_ORDER</td>
+</tr>
+</tbody>
+</table><p><strong>有几个参数就配置几组<code>SD_#{系统编码}_PARAMETER_FIELD</code>和<code>SD_#{系统编码}_PARAMETER_FIELD_CONFIG</code></strong></p>
+<p>第二步， 配置<code>CIV_MODULES</code>识别新增的模块</p>
+<p>在页面搜素配置项<code>CIV_MODULES</code>，往里面新增新模块的参数信息。<br>
+配置格式：</p>
+<pre><code class="prism language-java">#<span class="token punctuation">{</span>id<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>系统名称<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>系统编码<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>系统排序<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>多个模块信息之间用英文分号隔开，示例：</li>
+</ul>
+<pre><code class="prism language-java">test2<span class="token punctuation">,</span>测试模块<span class="token number">111</span><span class="token punctuation">,</span>TEST<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">;</span>fcqy_ylzx_module<span class="token punctuation">,</span>国家妇产区域医疗中心<span class="token punctuation">,</span>FCQY_YLZX<span class="token punctuation">,</span><span class="token number">110</span>
+</code></pre>
+<p>第三步，开放权限</p>
+<p>需要模块在哪里显示就开启哪个页面的权限</p>
+<ul>
+<li>就诊视图开放权限：<br>
+在配置项<code>CIV_VISIT</code>中添加<code>#{系统id}</code>和<code>#{系统名称}</code><br>
+在配置项<code>CIV_VISIT_VALUE</code>中添加<code>#{系统id}</code><br>
+然后在权限管理页面勾选权限</li>
+<li>分类视图开放权限<br>
+在配置项<code>CIV_CATEGORY</code>中添加<code>#{系统id}</code>和<code>#{系统名称}</code><br>
+在配置项<code>CIV_CATEGORY_VALUE</code>中添加<code>#{系统id}</code><br>
+然后在权限管理页面勾选权限</li>
+</ul>
+<h6><a id="34125__789"></a>3.4.1.2.5 是否隐藏就诊次</h6>
+<p><code>CIV_HIDDEN_VISIT_LIST_VISIT_ID</code>影响页面<br>
+<img src="https://img-blog.csdnimg.cn/bf43886ba40b4616887105a6dd02e0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34126__792"></a>3.4.1.2.6 获取医嘱状态列表</h6>
+<p><code>CIV_ORDERSTATUS</code>影响页面<br>
+<img src="https://img-blog.csdnimg.cn/9df327e7e1754384ad9a5e78fdd5d6c8.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/96b129ae0cd4431caf67401e1199847a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34127__797"></a>3.4.1.2.7 是否显示手术列表</h6>
+<p><code>SHOW_OPER_LIST</code>取0时 ，将调用第三方url<br>
+<img src="https://img-blog.csdnimg.cn/23f6f18bba9c408190a154aab91e0550.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2b81d2dc563146b1aa23474cbfff3784.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><code>SHOW_OPER_LIST</code>取1时 ，将查询hbase显示手术列表<br>
+<img src="https://img-blog.csdnimg.cn/2cb3ab7153304f2786d5b5f06a793f51.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/607419ad61d94e94bc21f5707d1753d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34128__804"></a>3.4.1.2.8 手术麻醉单显示配置</h6>
+<p><code>CIV_ANESTHESIA_CONFIG</code>影响页面</p>
+<p><img src="https://img-blog.csdnimg.cn/0de20f1687ad4f7bbc43f90e2fee3c1f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/41daaf40511745f58d243d600b1cc0ed.png" alt="在这里插入图片描述"></p>
+<h6><a id="34129__809"></a>3.4.1.2.9 护理单表头设置</h6>
+<p><code>CIV_NURSE_TABLE_HEAD</code>影响页面<br>
+<img src="https://img-blog.csdnimg.cn/fda5d184e99e41dc925ac96628c8ddd6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/7d473543ddf24f6982dc9c167f677ac0.png" alt="在这里插入图片描述"></p>
+<h6><a id="34130__813"></a>3.4.1.3.0 费用表格头部设置</h6>
+<p><code>FEE_TABLE_OUT_CHARGE_CONFIG</code> 和 <code>FEE_TABLE_IN_CHARGE_CONFIG</code>默认值<br>
+<img src="https://img-blog.csdnimg.cn/0fb466c1e72f4f9a8fac7a638f6474cc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<code>FEE_TABLE_IN_CHARGE_CONFIG</code></p>
+<pre><code>[{"display":"编码","key":true,"hidden":true,"name":"code"},{"display":"项目编码","name":"project_code","column":"BILL_ITEM_CODE"},{"display":"项目名称","name":"name","column":"BILL_ITEM_NAME"},{"display":"计费时间","name":"time","column":"CHARGE_TIME"},{"display":"单价","name":"price","column":"CHARGE_ITEM_PRICE"},{"display":"单位","name":"cell","column":"DRUG_AMOUNT_UNIT"},{"display":"数量","name":"account","column":"CHARGE_AMOUNT_VALUE"},{"display":"总金额","name":"totl_account","column":"CHARGE_FEE"},{"display":"计费人","name":"order_status","column":"CHARGE_OPER_NAME"},{"display":"开单医生","name":"doctor","column":"ORDER_DOCTOR_NAME"}]
+</code></pre>
+<p><code>FEE_TABLE_OUT_CHARGE_CONFIG</code></p>
+<pre><code>[{"display":"编码","key":true,"hidden":true,"name":"code"},{"display":"项目编码","name":"project_code","column":"BILL_ITEM_CODE"},{"display":"项目名称","name":"name","column":"BILL_ITEM_NAME"},{"display":"计费时间","name":"time","column":"CHARGE_TIME"},{"display":"单价","name":"price","column":"CHARGE_ITEM_PRICE"},{"display":"单位","name":"cell","column":"DRUG_AMOUNT_UNIT"},{"display":"数量","name":"account","column":"CHARGE_AMOUNT_VALUE"},{"display":"总金额","name":"totl_account","column":"CHARGE_FEE"},{"display":"计费人","name":"order_status","column":"CHARGE_OPER_NAME"},{"display":"开单医生","name":"doctor","column":"ORDER_DOCTOR_NAME"}]
+</code></pre>
+<p>影响页面<br>
+<img src="https://img-blog.csdnimg.cn/886aca5fb9e94d24a5ade3b70a98ec0e.png" alt="在这里插入图片描述"></p>
+<h6><a id="34131__827"></a>3.4.1.3.1 末次就诊栏是否跟随就诊次变化</h6>
+<p><code>SCNNAR_SHOW_WITH_VISIT</code>为true时，末次就诊栏显示选中的就诊次信息，为false时显示末次就诊信息<br>
+<img src="https://img-blog.csdnimg.cn/9e14220ab7c5441fadee33b06ccc21a9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="34132__830"></a>3.4.1.3.2 卡片默认查询时间范围</h6>
+<p>根据<code>VISIT_TIME_CHOICE_CONFIG</code>的取值，确定在进入就诊视图时默认的查询范围。<br>
+<img src="https://img-blog.csdnimg.cn/810542a95d4a432cabbd699e89c7d7f7.png" alt="在这里插入图片描述"></p>
+<h4><a id="342__835"></a>3.4.2 末次就诊信息</h4>
+<h5><a id="32421__836"></a>3.2.4.2.1 末次就诊涉及到的配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_OUT_VISIT_FILTER</td>
+<td align="center"></td>
+<td align="center">门诊查询条件过滤器</td>
+</tr>
+<tr>
+<td align="center">PATIENT_LAST_VISIT_INFO_VIEW</td>
+<td align="center"></td>
+<td align="center">末次就诊显示配置</td>
+</tr>
+<tr>
+<td align="center">CIV_PAT_MAINDIAG_INP_FILTER</td>
+<td align="center"></td>
+<td align="center">住院主诊断条件过滤器</td>
+</tr>
+</tbody>
+</table><p><code>CIV_OUT_VISIT_FILTER</code>示例：</p>
+<pre><code>格式：hbase字段名|操作符|值;hbase字段名|操作符|值
+VISIT_ID|=|1;VISIT_DEPT_NAME|=|检验科
+</code></pre>
+<p><code>PATIENT_LAST_VISIT_INFO_VIEW</code>末次就诊显示配置：</p>
+<pre><code>patient_id=患者ID;name=姓名;sex=性别;age=年龄;
+visit_type=就诊类型;visit_no=门诊号;visit_dept=就诊科室;
+main_diag=主诊断;visit_time=就诊日期;admission_time=入院日期;
+in_no=住院号;birthday=出生年月;bed_no=床号;visit_num=全部就诊
+</code></pre>
+<p>末次就诊显示配置对应的页面：<br>
+<img src="https://img-blog.csdnimg.cn/5f9c710fed3a4bd98e95cbec7684dba5.png" alt="在这里插入图片描述"><br>
+<code>CIV_PAT_MAINDIAG_INP_FILTER</code>默认配置：</p>
+<pre><code>DIAGNOSIS_PROPERTY_CODE|in|2,3;DIAGNOSIS_NUM|=|1;DIAGNOSIS_SUB_NUM|=|0
+</code></pre>
+<h5><a id="32422__863"></a>3.2.4.2.2 对应接口</h5>
+<p>末次就诊信息接口返回的响应分为2部分</p>
+<ul>
+<li>末次就诊显示配置</li>
+<li>末次就诊数据<br>
+<img src="https://img-blog.csdnimg.cn/033d65295e7a41ed80de58767047bc06.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+</ul>
+<h5><a id="32423__869"></a>3.2.4.2.3 末次就诊数据查询逻辑：</h5>
+<h6><a id="324231__870"></a>3.2.4.2.3.1 查询就诊记录</h6>
+<p>前端传入前获取到的所有visit_type_code|patient_id组合（3.4.1.1小节），结合患者当前就诊的pid|vtype，组成一个列表。循环遍历该列表，利用每一对pid、vtype查询：<br>
+住院类型查询<code>HDR_PAT_ADT</code>表，查询条件为：{<code>VISIT_TYPE_CODE</code> = 02}，获取的字段为：</p>
+<pre><code>"VISIT_ID", "ADMISSION_TIME", "PERSON_NAME", "SEX_NAME", 
+"IN_PATIENT_ID", "OUT_PATIENT_ID", "DATE_OF_BIRTH",
+"VISIT_TYPE_CODE", "CURR_BED_LABEL",
+"DEPT_ADMISSION_TO_CODE", "DEPT_ADMISSION_TO_NAME",
+"CURR_DEPT_NAME", "CURR_DEPT_CODE", "BED_LABEL",
+"ADMISSION_TIME", "INP_NO", "TRANS_NO",
+"DISTRICT_ADMISSION_TO_NAME", "DISCHARGE_TIME"
+</code></pre>
+<p>门诊类型查询<code>HDR_OUT_VISIT</code>表，先读取配置<code>CIV_OUT_VISIT_FILTER</code>，构造查询条件。</p>
+<p>获取的字段为：</p>
+<pre><code>"VISIT_TIME", "VISIT_ID", "VISIT_DEPT_NAME", "OUTP_NO", "IN_PATIENT_ID",
+ "OUT_PATIENT_ID", "VISIT_DEPT_CODE", "VISIT_TYPE_CODE", "PERSON_NAME", "SEX_NAME",
+ "DATE_OF_BIRTH", "VISIT_FLAG"
+</code></pre>
+<h6><a id="324232__892"></a>3.2.4.2.3.2 记录去重</h6>
+<p>存在转科的情况下去重，只留下转科情况的最后一次转科记录(<code>TRANS_NO</code>最大的)。<br>
+第三步，将部分字段进行特殊处理后，跟其他字段一起返回给前端展示。</p>
+<h6><a id="324233__896"></a>3.2.4.2.3.3 部分数据特殊处理</h6>
+<ul>
+<li>住院患者，若不存在转科（<code>TRANS_NO</code>=0）</li>
+</ul>
+<pre><code>就诊科室 显示 DEPT_ADMISSION_TO_NAME
+床号   显示  BED_LABEL
+
+</code></pre>
+<ul>
+<li>住院患者，若存在转科（<code>TRANS_NO</code>不等于0）</li>
+</ul>
+<pre><code>就诊科室 显示 CURR_DEPT_NAME （该字段为空时，使用 DEPT_ADMISSION_TO_NAME）
+床号 显示 CURR_BED_LABEL （该字段为空时，使用BED_LABEL）
+</code></pre>
+<p>姓名、性别、出生日期空值处理：<br>
+若之前的查询中姓名、性别、出生日期为空值，则从<code>HDR_PATIENT</code>表中，再次查询姓名、性别、出生日期。</p>
+<ul>
+<li>主诊断：</li>
+</ul>
+<p>住院患者（<code>VISIT_TYPE_CODE</code>等于02），在院时（<code>DISCHARGE_TIME</code>为空）<br>
+根据<code>IN_PATIENT_ID</code>和<code>VISIT_ID</code>查询<code>HDR_EMR_CONTENT_DIAG</code>表，读取配置<code>CIV_PAT_MAINDIAG_INP_FILTER</code>添加查询条件，<strong>若配置为空，读取配置默认值</strong></p>
+<p>获取字段：</p>
+<pre><code>DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_CODE",
+ "DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC", "VISIT_ID
+</code></pre>
+<p>住院患者，出院时（<code>DISCHARGE_TIME</code>不为空）<br>
+根据<code>IN_PATIENT_ID</code>和<code>VISIT_ID</code>查询<code>HDR_INP_SUMMARY_DIAG</code>表，读取配置<code>CIV_PAT_MAINDIAG_INP_FILTER</code>添加查询条件，<strong>若配置为空，读取配置默认值</strong>。<br>
+获取字段：</p>
+<pre><code>"DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME",
+ "DIAGNOSIS_DESC", "DIAGNOSIS_NUM", "DIAGNOSIS_TYPE_NAME", "VISIT_ID"
+</code></pre>
+<p>存在出院后归档前补充患者就诊信息的情况，如果出院了病案诊断表（<code>HDR_INP_SUMMARY_DIAG</code>）里面没有数据，再回头从病历诊断（<code>HDR_EMR_CONTENT_DIAG</code>）里面取数据。</p>
+<p>非住院患者（<code>VISIT_TYPE_CODE</code>不等于02）：<br>
+查询表<code>HDR_OUT_VISIT_DIAG</code>，查询条件：{<code>MAIN_FLAG</code>=1}，查询字段：</p>
+<pre><code>"DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_CODE",
+ "DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC", "VISIT_ID"
+</code></pre>
+<ul>
+<li>患者过敏次数<br>
+循环遍历所有的pid|vtype组合，查询<code>HDR_ALLERGY</code>，查询的总记录数为过敏次数。</li>
+</ul>
+<h4><a id="343__944"></a>3.4.3 就诊列表和就诊卡片</h4>
+<h5><a id="3431__945"></a>3.4.3.1 对应接口</h5>
+<p>可以看到接口传参中，部分参数是根据页面输入得到的<br>
+<img src="https://img-blog.csdnimg.cn/5754a1f31bf845c7834b2575f8fc3b98.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="3432__948"></a>3.4.3.2 涉及到的配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">VISIT_SHOW_VID_CONFIG</td>
+<td align="center">默认值：all</td>
+<td align="center">是否显示就诊次</td>
+</tr>
+</tbody>
+</table><h5><a id="3433__952"></a>3.4.3.3 查询逻辑</h5>
+<p>简单概况：<br>
+根据pid|vtype的组合，查询<code>HDR_PATIENT</code>表，获取<code>EID</code><br>
+再根据患者<code>EID</code>，在solr的患者基本信息collection中查询出所有的<code>pid|vtype</code>组合<br>
+再根据所有的<code>pid|vtype</code>组合，查询得到所有的就诊记录<br>
+从就诊记录中获取科室统计后的就诊数据 ，进行部门条件筛选</p>
+<p>部门条件筛选：<br>
+<img src="https://img-blog.csdnimg.cn/e4372362f3c945548de757f434611c44.png" alt="在这里插入图片描述"></p>
+<h6><a id="34331_962"></a>3.4.3.3.1查询出所有就诊记录</h6>
+<p>第一步，获取次patientid下的所有诊断：<br>
+住院患者（vtype=02）,根据<code>pid</code>查询<code>HDR_EMR_CONTENT_DIAG</code>表，读取<code>CIV_PAT_MAINDIAG_INP_FILTER</code>添加查询条件），获取字段。<br>
+（<strong>该配置有默认值，若为空，则自动读取默认值<code>DIAGNOSIS_PROPERTY_CODE|in|2,3;DIAGNOSIS_NUM|=|1;DIAGNOSIS_SUB_NUM|=|0</code></strong>）</p>
+<pre><code>"DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_CODE",
+"DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC", "VISIT_ID"
+</code></pre>
+<p>再根据<code>pid</code>查询<code>HDR_INP_SUMMARY_DIAG</code>表，读取<code>CIV_PAT_MAINDIAG_INP_FILTER</code>添加查询条件，获取字段</p>
+<pre><code>"DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DESC", "DIAGNOSIS_NUM", "DIAGNOSIS_TYPE_NAME", "VISIT_ID"
+</code></pre>
+<p>门诊患者（vtype=01）,根据<code>pid</code>查询表<code>HDR_OUT_VISIT_DIAG</code>，读取字段</p>
+<pre><code>"DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_CODE",
+"DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC", "VISIT_ID"
+</code></pre>
+<p>急诊患者（vtype=00）,根据<code>pid</code>查询<code>HDR_OUT_VISIT_DIAG</code>，查询条件为：{<code>EMERGENCY_VISIT_IND</code> = true},读取字段：</p>
+<pre><code>DIAGNOSIS_CODE", "DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_CODE",
+ "DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC", "VISIT_ID
+</code></pre>
+<p>第二步，进行数据处理后，返回给前端展示<br>
+<img src="https://img-blog.csdnimg.cn/1fd98975e10d40c38f6bdfc76a7b605c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>住院患者，就诊日期对应入院时间<code>ADMISSION_TIME</code>，就诊状态对应<code>VISIT_STATUS_CODE</code><br>
+门诊患者，就诊日期对应就诊时间<code>VISIT_TIME</code>，就诊状态对应<code>VISIT_STATUS_CODE</code><br>
+根据页面输入，构造查询条件，具体值看前端传参。例如：{<code>ADMISSION_TIME</code> 大于等于 2019-10-1,<code>VISIT_STATUS_CODE</code> 等于 “”}<br>
+<img src="https://img-blog.csdnimg.cn/bc174ce3786547b081658c6725799388.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>住院患者，根据pid和vtype，结合页面上输入的条件查询表<code>HDR_PAT_ADT</code>，获取字段：</p>
+<pre><code>DEPT_DISCHARGE_FROM_CODE", "DEPT_DISCHARGE_FROM_NAME", "ADMISSION_TIME",
+ "DISCHARGE_TIME", "VISIT_ID", "DEPT_ADMISSION_TO_NAME", "DEPT_ADMISSION_TO_CODE", "INP_NO",
+"IN_PATIENT_ID", "TRANS_NO", "CURR_DEPT_NAME", "CURR_DEPT_CODE", "DISTRICT_ADMISSION_TO_NAME", "VISIT_STATUS_CODE", "VISIT_STATUS_NAME", "APPOINT_REG_SOURCE_CODE", "APPOINT_REG_SOURCE_NAME
+</code></pre>
+<p><strong>存在转科的，只取最后一次记录</strong>。</p>
+<p><code>TRANS_NO</code>=0的，科室取入院科室（<code>DEPT_ADMISSION_TO_NAME</code>），否则取当前科室（<code>CURR_DEPT_NAME</code>）。<br>
+若患者在院（<code>DISCHARGE_TIME</code>为空），则主诊断取<code>HDR_EMR_CONTENT_DIAG</code>的诊断数据<br>
+若患者出院，则主诊断取<code>HDR_INP_SUMMARY_DIAG</code>的诊断数据。<br>
+将查询的数据</p>
+<p>门诊患者，根据pid，结合页面上输入的条件查询<code>HDR_OUT_VISIT</code>表，<br>
+若是急诊患者（vtype=00）,增加条件：{<code>EMERGENCY_VISIT_IND</code> 等于 true}，<br>
+获取字段：</p>
+<pre><code>"REGISTING_TIME", "VISIT_TIME", "VISIT_ID", "VISIT_DEPT_NAME",
+ "VISIT_DEPT_CODE", "VISIT_FLAG", "OUT_PATIENT_ID", "EMERGENCY_VISIT_IND",
+ "VISIT_STATUS_NAME", "OUTP_NO", "VISIT_STATUS_CODE", "VISIT_STATUS_NAME", "APPOINT_REG_SOURCE_CODE", "APPOINT_REG_SOURCE_NAME
+</code></pre>
+<p>若就诊时间没有，用挂号时间代替，其他字段正常返回给前端展示。</p>
+<h4><a id="344__1021"></a>3.4.4 过敏提醒</h4>
+<p>对应接口<br>
+<img src="https://img-blog.csdnimg.cn/587f80e3423348e0807ab0f504ba9fc8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据全部的pid查询<code>HDR_ALLERGY</code>表，获取字段：</p>
+<pre><code>"ALLERGY_CATEGORY_NAME", "ALLERGEN", "ALLERGEN_NAME", "ALLERGY_REASON", "ALLERGY_REASON_NAME",
+"ALLERGY_REACTION", "ALLERGY_SEVERITY", "ALLERGY_SEVERITY_NAME", "OPERATOR_NURSE",
+ "OPERATOR_NURSE_NAME", "OPERATE_NURSE_TIME", "RECORD_PERSON", "RECORD_PERSON_NAME",
+"RECORDTIME", "ALLERGY_NAME"
+</code></pre>
+<h4><a id="345__1034"></a>3.4.5 危急值提醒</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/250855aaf23542349eecb5dda7a2a231.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid和<code>visit_id</code>查询<code>HDR_CRITICAL_VALUES</code>表，获取字段：</p>
+<pre><code>"LAB_ITEM_NAME", "LAB_SUB_ITEM_NAME", "LAB_SUB_ITEM_CODE", 
+"CRISIS_VALUE", "RANGE", "REPORT_TIME",
+ "OPERATOR_NAME", "OPERATE_TIME", "CRISIS_FLAG", "ORDER_NO"
+</code></pre>
+<p>再利用表中的<code>LAB_SUB_ITEM_CODE</code>和<code>ORDER_NO</code>作为查询条件，结合pid和<code>visit_id</code>，查询<code>HDR_LAB_REPORT_DETAIL</code>表，获取字段：</p>
+<pre><code>LAB_ITEM_NAME
+</code></pre>
+<h4><a id="346__1050"></a>3.4.6 院感提醒</h4>
+<p><img src="https://img-blog.csdnimg.cn/02b848d1e8414adead2afc5f7f633f87.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid和vid查询<code>HDR_INFECTION_WARN</code>表，获取字段：</p>
+<pre><code>"INFECTED_DIAG", "INFECTED_POSITION", "INFECTED_TIME", "INFECTED_BACTERIA",
+ "INFECTED_TIMES", "INFECTED_SOURCE", "SUSPICIOUS_DIAG"
+</code></pre>
+<h4><a id="347__1059"></a>3.4.7 首页模块</h4>
+<p>首页模块会根据当次就诊类型展示不同的内容。</p>
+<h5><a id="3471__1061"></a>3.4.7.1 首页模块涉及的配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_VISIT_OUTP_SUNNARY</td>
+<td align="center"></td>
+<td align="center">门诊首页字段</td>
+</tr>
+<tr>
+<td align="center">CIV_VISIT_SUNNARY</td>
+<td align="center"></td>
+<td align="center">住院首页字段</td>
+</tr>
+<tr>
+<td align="center">CIV_VISIT_SUNNARY_INFO</td>
+<td align="center"></td>
+<td align="center">住院首页诊断部分字段</td>
+</tr>
+<tr>
+<td align="center">VISIT_SUMMARY_FEE_COLUMN</td>
+<td align="center"></td>
+<td align="center">住院费用字段</td>
+</tr>
+</tbody>
+</table><p><code>CIV_VISIT_OUTP_SUNNARY</code>配置示例</p>
+<pre><code>姓名,PERSON_NAME;性别,SEX_NAME;出生日期,DATE_OF_BIRTH;年龄,AGE_VALUE;婚姻,MARITAL_STATUS_NAME;职业,OCCUPATION_NAME;身份证号,ID_CARD_NO;现住址,MAILING_ADDRESS;电话,PHONE_NUMBER;号别,REG_CATEGORY_NAME;就诊次数,VISIT_ID;就诊科室,VISIT_DEPT_NAME;就诊医生,VISIT_DOCTOR_NAME;就诊时间,VISIT_TIME;急诊标识,EMERGENCY_VISIT_IND;初诊标识,FIRSTV_INDICATOR
+</code></pre>
+<p><code>CIV_VISIT_OUTP_SUNNARY</code>配置效果<br>
+<img src="https://img-blog.csdnimg.cn/e95db51cfb674c90a99e9175db34af02.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<code>CIV_VISIT_SUNNARY</code>配置示例</p>
+<pre><code>机构名称,ORG_NAME;组织机构代码,ORG_OID;-,-;-,-;医疗付费方式,CHARGE_TYPE;健康卡号,HEALTH_CARD_NO;住院次数,VISIT_ID;病案号,CASE_NO;姓名,PERSON_NAME;性别,SEX_NAME;出生日期,DATE_OF_BIRTH;年龄,AGE_VALUE;国籍,NATION_NAME;年龄-不足一周岁,BABY_AGE;新生儿出生体重,BABY_BIRTH_WEIGHT;新生儿入院体重,BABY_ADMIN_WEIGHT;出生地,BIRTH_ADDRESS;籍贯,NATIVE_PROVINCE_NAME;民族,NATIONALITY_NAME;身份证号,ID_CARD_NO;职业,OCCUPATION_NAME;婚姻,MARITAL_STATUS_NAME;现住址,MAILING_ADDRESS;电话,PHONE_NUMBER;邮编,POSTCODE;户口地址,FAMILY_ADDRESS;-,-;-,-;工作单位及地址,EMPLOYER_ADDRESS;电话,BUSINESS_PHONE_PHONE;邮编,EMPLOYER_POSTCODE;联系人姓名,NEXT_OF_KIN;关系,RELATIONSHIP_NAME;地址,NEXT_OF_KIN_ADDR;电话,NEXT_OF_KIN_PHONE;入院途径,ADMISSION_CLASS_NAME;入院时间,ADMISSION_TIME;入院科室,DEPT_ADMISSION_TO_NAME;病房,WARD_ADMISSION_TO_NAME;转院科别,ORIGIN_DEPT;出院时间,DISCHARGE_TIME;出院科别,DEPT_DISCHARGE_FROM_NAME;病房,WARD_DISCHARGE_FROM;实际住院天数,IN_HOSPITAL_DAYS;离院方式,DISCHARGE_CLASS_NAME;拟接收医疗机构名称,RECEIVE_ORG;颅脑损伤患者昏迷时间：（入院前）,BEFORE_COMA_TIME;颅脑损伤患者昏迷时间：（入院后）,IN_COMA_TIME
+</code></pre>
+<p><code>CIV_VISIT_SUNNARY</code>配置效果<br>
+<img src="https://img-blog.csdnimg.cn/3c05803f65754933a6c4cc09187993a4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<code>CIV_VISIT_SUNNARY_INFO</code>配置示例</p>
+<pre><code>病理号：,PATHOLOGY_NO;药物过敏：,DRUG_ALLERGY_INDICATOR;过敏药物：,DRUG_ALLERGY_NAME;死亡患者尸检：,AUTOPSY_INDICATOR;血型：,BLOOD_TYPE_NAME;Rh：,RH_BLOOD_NAME;科主任：,DEPT_DIRECTOR_NAME;主任医师：,SENIOR_DOCTOR_NAME;主治医师：,ATTENDING_DOCTOR_NAME;住院医师：,INP_DOCTOR_NAME;责任护士：,PRIMARY_NURSE_NAME;进修医师：,FURTHER_DOCTOR;实习医师：,PRACTICAL_DOCTOR_NAME;编码员：,CATALOGER_NAME;病案质量：,RECORD_QUALITY_NAME;质控医师：,QC_DOCTOR_NAME;质控护士：,QC_NURSE_NAME;日期：,QC_DATE
+</code></pre>
+<p><code>CIV_VISIT_SUNNARY_INFO</code>配置效果<br>
+<img src="https://img-blog.csdnimg.cn/9b458ec1378b412caccd4a7b32fd57a9.png" alt="在这里插入图片描述"><br>
+<code>VISIT_SUMMARY_FEE_COLUMN</code>配置格式</p>
+<pre><code>#{主分类},#{字段code},#{字段名称};#{主分类},#{字段code},#{字段名称};
+</code></pre>
+<h5><a id="3472__1096"></a>3.4.7.2 首页模块对应接口：</h5>
+<ul>
+<li>门诊：<br>
+<img src="https://img-blog.csdnimg.cn/9008e450283f4471b4a77af29f373e88.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+<li>住院：<br>
+<img src="https://img-blog.csdnimg.cn/5e1349ddeb53419d9ae4d0b3541c2539.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+</ul>
+<h5><a id="3473__1101"></a>3.4.7.3 门诊查询逻辑</h5>
+<p>根据pid和vid从<code>HDR_OUT_VISIT</code>表中查询，获取配置的字段，填充患者信息及就诊信息<br>
+<img src="https://img-blog.csdnimg.cn/c82d9803af91441abd78249bdc2aa20c.png" alt="在这里插入图片描述"></p>
+<p>再根据pid和vid从<code>HDR_OUT_VISIT_DIAG</code>中获取诊断数据，填充诊断列表。<br>
+<img src="https://img-blog.csdnimg.cn/495c906ee38e436fac76f45f816f5d16.png" alt="在这里插入图片描述"></p>
+<h5><a id="3474__1108"></a>3.4.7.4 住院查询逻辑</h5>
+<p>填充患者信息及就诊信息。<br>
+根据pid和vid查询<code>HDR_INP_SUMMARY</code>表，获取配置的字段，填充并展示<br>
+<img src="https://img-blog.csdnimg.cn/e77b405632df40fe8dc2ff79112530ef.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+填充诊断信息<br>
+根据pid和vid查询<code>HDR_INP_SUMMARY</code>表，获取配置的字段，填充并展示<br>
+<img src="https://img-blog.csdnimg.cn/ea23b6bec6bd4485b119f72048b05348.png" alt="在这里插入图片描述"><br>
+填充诊断列表<br>
+<img src="https://img-blog.csdnimg.cn/809afb0ca3df473b9264c685f14886b4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据pid和vid查询<code>HDR_INP_SUMMARY_DIAG</code>表，获取字段返回给前端展示。</p>
+<pre><code>"DIAGNOSIS_TYPE_NAME", "DIAGNOSIS_NUM", "DIAGNOSIS_SUB_NUM", "DIAGNOSIS_CODE",
+"DIAGNOSIS_NAME", "DIAGNOSIS_TIME", "DIAGNOSIS_DOCTOR_NAME", "DIAGNOSIS_DESC",
+"DIAGNOSIS_PART", "CATALOG_TIME", "DIAGNOSIS_DEPT_NAME", "TREAT_RESULT_NAME", "TREAT_DAYS",
+"ADM_CONDITION_NAME"
+</code></pre>
+<p>填充手术信息<br>
+<img src="https://img-blog.csdnimg.cn/89a9f9480b3d411f801b1906079305ac.png" alt="在这里插入图片描述"><br>
+根据pid和vid查询<code>HDR_INP_SUMMARY_OPER</code>表，获取字段返回给前端展示。</p>
+<pre><code>"DIAGNOSIS_CODE", "OPER_APPLY_NO", "OPER_NO", "OPERATION_NAME", "OPERATION_DESC",
+ "OPERATION_DATE", "CATALOG_TIME", "OPERATION_GRADE_NAME", "SURGEN_CODE", "SURGEN_NAME",
+"FIRST_ASSISTANT_NAME", "SECOND_ASSISTANT_NAME", "ANESTHESIA_METHOD_NAME",
+ "ANESTHESIA_DOCTOR_NAME", "ASA_GRADE_NAME", "WOUND_GRADE_NAME", "HEALING_GRADE_NAME",
+ "OPERATION_CODE"
+</code></pre>
+<p>填充费用信息<br>
+<img src="https://img-blog.csdnimg.cn/13e7a6ca33bc44aeaeb95445c344c7d3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据pid和vid查询<code>HDR_INP_SUMMARY</code>表,固定获取字段：</p>
+<pre><code>"COUNT_CHARGE_FEE", "CHARGE_FEE1", "CHARGE_FEE2",
+ "CHARGE_FEE3", "CHARGE_FEE4", "CHARGE_FEE5", "CHARGE_FEE6", "CHARGE_FEE7", "CHARGE_FEE8",
+ "CHARGE_FEE9", "CHARGE_FEE10", "CHARGE_FEE11", "CHARGE_FEE12", "CHARGE_FEE13", "CHARGE_FEE14",
+ "CHARGE_FEE15", "CHARGE_FEE16", "CHARGE_FEE17", "CHARGE_FEE18", "CHARGE_FEE19", "CHARGE_FEE20",
+ "CHARGE_FEE21", "CHARGE_FEE22", "CHARGE_FEE23", "CHARGE_FEE24", "CHARGE_FEE25", "CHARGE_FEE26",
+ "CHARGE_FEE27", "CHARGE_FEE28", "CHARGE_FEE29", "CHARGE_FEE30", "CHARGE_FEE31", "CHARGE_FEE32",
+ "CHARGE_FEE33", "CHARGE_FEE34", "CHARGE_FEE35", "CHARGE_FEE36", "CHARGE_FEE37", "CHARGE_FEE38",
+"CHARGE_FEE39", "CHARGE_FEE40"
+</code></pre>
+<p>此外，还可根据配置<code>VISIT_SUMMARY_FEE_COLUMN</code>额外获取字段。<br>
+将字段经过计算后，展示。</p>
+<h4><a id="348__1151"></a>3.4.8 医嘱模块</h4>
+<h5><a id="3481__1152"></a>3.4.8.1 医嘱模块涉及的配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ORDER_SHORT_PROPERTY_CONFIG</td>
+<td align="center">默认值： 临时</td>
+<td align="center">临时医嘱名称，对应<code>ORDER_PROPERTIES_NAME</code>字段</td>
+</tr>
+<tr>
+<td align="center">ORDER_LONG_PROPERTY_CONFIG</td>
+<td align="center">默认值： 长期</td>
+<td align="center">长期医嘱名称，对应<code>ORDER_PROPERTIES_NAME</code>字段</td>
+</tr>
+<tr>
+<td align="center">ORDER_STATUS</td>
+<td align="center">配置示例：撤销,废弃</td>
+<td align="center">需要排除的医嘱状态</td>
+</tr>
+<tr>
+<td align="center">VISIT_ORDER_ALL_SHOW_CONFIG</td>
+<td align="center">json，有默认值</td>
+<td align="center">医嘱显示列配置</td>
+</tr>
+<tr>
+<td align="center">OCL_MZ_KFFilter</td>
+<td align="center"></td>
+<td align="center">门诊口服药品医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OCL_KFFilter</td>
+<td align="center"></td>
+<td align="center">住院口服药品医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_DRUG_KF</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">门诊口服用药医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_DRUG_KF</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">住院口服用药医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OCL_MZ_JMZSFilter</td>
+<td align="center"></td>
+<td align="center">门诊静脉输液药品医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OCL_JMZSFilter</td>
+<td align="center"></td>
+<td align="center">住院静脉输液药品医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_DRUG_JMZS</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">门诊静脉输液药品医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_DRUG_JMZS</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">住院静脉输液药品医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OCL_MZ_QTFilter</td>
+<td align="center"></td>
+<td align="center">门诊其他用药医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OCL_QTFilter</td>
+<td align="center"></td>
+<td align="center">住院其他用药医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_DRUG_QTYP</td>
+<td align="center"></td>
+<td align="center">门诊其他用药医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_DRUG_QTYP</td>
+<td align="center"></td>
+<td align="center">住院其他用药医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_LAB</td>
+<td align="center"></td>
+<td align="center">门诊检验申请医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_LAB</td>
+<td align="center"></td>
+<td align="center">住院检验申请医嘱类别</td>
+</tr>
+<tr>
+<td align="center">LAB_OVER_TIME</td>
+<td align="center">true或false</td>
+<td align="center">是否显示超时信息</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_EXAM</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">门诊检查申请医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_EXAM</td>
+<td align="center"><code>ORDER_CLASS_CODE</code>的值，用英文逗号分隔</td>
+<td align="center">住院检查申请医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_OPER</td>
+<td align="center"></td>
+<td align="center">门诊手术医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_OPER</td>
+<td align="center"></td>
+<td align="center">住院手术医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OCL_MZ_OthersFilter</td>
+<td align="center"></td>
+<td align="center">门诊其他医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OCL_INPV_OthersFilter</td>
+<td align="center"></td>
+<td align="center">住院其他医嘱查询条件</td>
+</tr>
+<tr>
+<td align="center">OrderClose_OTHERS</td>
+<td align="center"></td>
+<td align="center">住院其他医嘱类别</td>
+</tr>
+<tr>
+<td align="center">OrderClose_MZ_OTHERS</td>
+<td align="center"></td>
+<td align="center">门诊其他医嘱类别</td>
+</tr>
+</tbody>
+</table><p><code>VISIT_ORDER_ALL_SHOW_CONFIG</code>配置示例</p>
+<pre><code>{
+  "0": [
+    {
+      "display": "医嘱类别",
+      "name": "orderClassName",
+      "width": 80,
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "医嘱性质",
+      "name": "orderPropertiesName",
+      "field": "ORDER_PROPERTIES_NAME"
+    },
+    {
+      "display": "医嘱项",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "医嘱开始时间",
+      "name": "orderBeginTime",
+      "field": "ORDER_BEGIN_TIME"
+    },
+    {
+      "display": "医嘱结束时间",
+      "name": "orderEndTime",
+      "field": "ORDER_END_TIME"
+    },
+    {
+      "display": "执行频次",
+      "name": "frequencyName",
+      "field": "FREQUENCY_NAME",
+      "width": 60
+    },
+    {
+      "display": "持续时间",
+      "name": "durationValue",
+      "field": "DURATION_VALUE",
+      "width": 50
+    },
+    {
+      "display": "医嘱状态",
+      "name": "orderStatusName",
+      "field": "PRES_STATUS_NAME",
+      "width": 60
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderType",
+      "field": "-"
+    }
+  ],
+  "1": [
+    {
+      "display": "医嘱性质1",
+      "name": "orderPropertiesName",
+      "field": "ORDER_PROPERTIES_NAME"
+    },
+    {
+      "display": "医嘱开始时间",
+      "name": "orderBeginTime",
+      "field": "CHARGE_TIME",
+      "width": 75
+    },
+    {
+      "display": "医嘱结束时间",
+      "name": "orderEndTime",
+      "field": "PRESC_TIME",
+      "width": 75
+    },
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "CHARGE_NAME",
+      "width": 80
+    },
+    {
+      "display": "剂量",
+      "name": "dosageValue",
+      "field": "TOTAL_DOSAGE_VALUE"
+    },
+    {
+      "display": "单位",
+      "name": "dosageUnit",
+      "field": "TOTAL_DOSAGE_UNIT"
+    },
+    {
+      "display": "用法",
+      "name": "pharmacyWayName",
+      "field": "PHARMACY_WAY_NAME"
+    },
+    {
+      "display": "频率",
+      "name": "frequencyName",
+      "field": "FREQUENCY_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME",
+      "width": 60
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME",
+      "width": 50
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME",
+      "width": 75
+    },
+    {
+      "display": "当前状态",
+      "name": "orderStatusName",
+      "field": "PRES_STATUS_NAME",
+      "width": 60
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "2": [
+    {
+      "display": "医嘱性质2",
+      "name": "orderPropertiesName",
+      "field": "ORDER_PROPERTIES_NAME",
+      "width": 80
+    },
+    {
+      "display": "开始时间",
+      "name": "orderBeginTime",
+      "field": "CHARGE_TIME",
+      "width": 75
+    },
+    {
+      "display": "结束时间",
+      "name": "orderEndTime",
+      "field": "PRESC_TIME",
+      "width": 75
+    },
+    {
+      "display": "组标志",
+      "name": "parentOrderNo",
+      "field": "PARENT_ORDER_NO"
+    },
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "CHARGE_NAME",
+      "width": 80
+    },
+    {
+      "display": "剂量",
+      "name": "dosageValue",
+      "field": "TOTAL_DOSAGE_VALUE"
+    },
+    {
+      "display": "单位",
+      "name": "dosageUnit",
+      "field": "TOTAL_DOSAGE_UNIT"
+    },
+    {
+      "display": "用法",
+      "name": "pharmacyWayName",
+      "field": "PHARMACY_WAY_NAME"
+    },
+    {
+      "display": "频率",
+      "name": "frequencyName",
+      "field": "FREQUENCY_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME",
+      "width": 60
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME",
+      "width": 50
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME",
+      "width": 75
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    },
+    {
+      "display": "当前状态",
+      "name": "orderStatusName",
+      "field": "PRES_STATUS_NAME",
+      "width": 60
+    }
+  ],
+  "4": [
+    {
+      "display": "医嘱性质4",
+      "name": "orderPropertiesName",
+      "field": "ORDER_PROPERTIES_NAME",
+      "width": 80
+    },
+    {
+      "display": "开始时间",
+      "name": "orderBeginTime",
+      "field": "CHARGE_TIME",
+      "width": 75
+    },
+    {
+      "display": "结束时间",
+      "name": "orderEndTime",
+      "field": "PRESC_TIME",
+      "width": 75
+    },
+    {
+      "display": "组标志",
+      "name": "parentOrderNo",
+      "field": "PARENT_ORDER_NO"
+    },
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "CHARGE_NAME",
+      "width": 80
+    },
+    {
+      "display": "剂量",
+      "name": "dosageValue",
+      "field": "TOTAL_DOSAGE_VALUE"
+    },
+    {
+      "display": "单位",
+      "name": "dosageUnit",
+      "field": "TOTAL_DOSAGE_UNIT"
+    },
+    {
+      "display": "用法",
+      "name": "pharmacyWayName",
+      "field": "PHARMACY_WAY_NAME"
+    },
+    {
+      "display": "频率",
+      "name": "frequencyName",
+      "field": "FREQUENCY_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME",
+      "width": 60
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME",
+      "width": 50
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME",
+      "width": 75
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    },
+    {
+      "display": "当前状态",
+      "name": "orderStatusName",
+      "field": "PRES_STATUS_NAME",
+      "width": 60
+    }
+  ],
+  "6": [
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "当前状态",
+      "name": "reportStatus",
+      "field": "REPORT_STATUS"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "6.1": [
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "是否超时",
+      "name": "overTime",
+      "field": "-"
+    },
+    {
+      "display": "当前状态",
+      "name": "reportStatus",
+      "field": "REPORT_STATUS"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "8": [
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "当前状态",
+      "name": "reportStatus",
+      "field": "REPORT_STATUS"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "8.1": [
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "医嘱类型",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "是否超时",
+      "name": "overTime",
+      "field": "OVER_TIME"
+    },
+    {
+      "display": "当前状态",
+      "name": "reportStatus",
+      "field": "REPORT_STATUS"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "5": [
+    {
+      "display": "拟手术名称",
+      "name": "operationName",
+      "field": "OPERATION_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "施术者",
+      "name": "planOperDoctorName",
+      "field": "PLAN_OPER_DOCTOR_NAME"
+    },
+    {
+      "display": "术前诊断",
+      "name": "diagBeforeOperationName",
+      "field": "DIAG_BEFORE_OPERATION_NAME"
+    },
+    {
+      "display": "手术日期",
+      "name": "applyOperTime",
+      "field": "PLAN_OPER_TIME"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ],
+  "12": [
+    {
+      "display": "医嘱名称",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "剂量",
+      "name": "dosageValue",
+      "field": "DOSAGE_VALUE"
+    },
+    {
+      "display": "频率",
+      "name": "frequencyName",
+      "field": "FREQUENCY_NAME"
+    },
+    {
+      "display": "医嘱类",
+      "name": "orderClassName",
+      "field": "ORDER_CLASS_NAME"
+    },
+    {
+      "display": "护理等级",
+      "name": "orderItemName",
+      "field": "ORDER_ITEM_NAME"
+    },
+    {
+      "display": "开立人",
+      "name": "orderDoctorName",
+      "field": "ORDER_DOCTOR_NAME"
+    },
+    {
+      "display": "开立时间",
+      "name": "orderTime",
+      "field": "ORDER_TIME"
+    },
+    {
+      "display": "开始时间",
+      "name": "orderBeginTime",
+      "field": "ORDER_BEGIN_TIME"
+    },
+    {
+      "display": "结束时间",
+      "name": "orderEndTime",
+      "field": "ORDER_END_TIME"
+    },
+    {
+      "display": "医嘱性质",
+      "name": "orderPropertiesName",
+      "field": "ORDER_PROPERTIES_NAME"
+    },
+    {
+      "display": "医嘱状态",
+      "name": "orderStatusName",
+      "field": "ORDER_STATUS_NAME"
+    },
+    {
+      "display": "CESHI",
+      "name": "STAY_DEPT_NAME",
+      "field": "STAY_DEPT_NAME"
+    },
+    {
+      "display": "医嘱编号",
+      "name": "orderNo",
+      "field": "ORDER_NO"
+    }
+  ]
+}
+</code></pre>
+<p>按顺序，每个数字编号对应一个页面。特殊的，6和6.1,8和8.1对应同样的页面，前者是未启用超时配置读取的配置，后者则是启用时读取的。</p>
+<p>field对应hbase的字段，name对应返回给前端的字段（无要求），display为展示名称。</p>
+<p><strong>默认配置有必须的字段，尽量不要删除，可以任意增加其他字段。</strong></p>
+<h5><a id="3482__1726"></a>3.4.8.2 医嘱模块接口</h5>
+<p><img src="https://img-blog.csdnimg.cn/29dbbdc7a234408cb945f7444633b185.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="3483__1728"></a>3.4.8.3 全部医嘱查询逻辑</h5>
+<p>查询的表名：门诊医嘱–<code>HDR_OUT_ORDER</code>；住院医嘱–<code>HDR_IN_ORDER</code></p>
+<p>根据页面输入，获取查询条件：<br>
+<img src="https://img-blog.csdnimg.cn/aa1a6d576a4c4a9d9f01bfd2b3b18217.png" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/0a9e9ee5d5314a339b177e77526ea114.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+医嘱性质条件：<br>
+全部----orderProperty=0-----不作为条件查询；<br>
+临时----orderProperty=1-----条件为：{<code>ORDER_PROPERTIES_NAME</code> 包含 <code>ORDER_SHORT_PROPERTY_CONFIG</code>的值}；<br>
+长期—orderProperty=2----条件为：{<code>ORDER_PROPERTIES_NAME</code> 包含 <code>ORDER_LONG_PROPERTY_CONFIG</code>的值}；</p>
+<p>医嘱状态条件：<br>
+<img src="https://img-blog.csdnimg.cn/0f30c9d2f34441a5a746937163725f40.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>{ORDER_STATUS_NAME 相似 orderStatus}</p>
+<p>结合上述页面输入的条件，再读取配置<code>ORDER_STATUS</code>增加条件{<code>ORDER_STATUS_NAME</code> 不包含 配置的值}，从对应的医嘱表中查询需要的字段，按配置<code>VISIT_ORDER_ALL_SHOW_CONFIG</code>第0项展示</p>
+<h5><a id="3484__1746"></a>3.4.8.4 口服用药查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/191f2a5501ad412182f94a92ec2af139.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据就诊类型，查询医嘱表（参照3.4.8.3 节）。<br>
+根据页面输入，获取部分查询条件（参照3.4.8.3 节）。<br>
+根据就诊类型读取口服药品医嘱查询条件配置，拼接成查询条件之一。<br>
+根据配置增加排除医嘱的条件（参照3.4.8.3 节）。<br>
+读取口服用药医嘱类别配置，增加条件：{<code>ORDER_CLASS_CODE</code> in 配置值}<br>
+根据pid和vid，结合所有查询条件，查询医嘱表，获取数据，根据医嘱显示列配置第1项展示。</p>
+<h5><a id="3485__1755"></a>3.4.8.5 静脉注射查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/897b7dd4ad3449bfac3d7ac2fd90b9e3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取静脉注射对应的配置，查询，根据医嘱显示列配置第2项展示。</p>
+<h5><a id="3486__1758"></a>3.4.8.6 其他用药查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/808ced0f8d32480e913133aa0ffbc5d1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取静脉注射对应的配置，查询，根据医嘱显示列配置第4项展示。</p>
+<h5><a id="3487__1761"></a>3.4.8.7 检验申请查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/58355130dc2c432a808cd5c69b0c0bad.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取对应的配置，查询医嘱，若打开超时配置，根据医嘱显示列配置第6.1项展示，否则按医嘱显示列配置第6项展示。</p>
+<h5><a id="3488__1764"></a>3.4.8.8 检查申请查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/05f26c101a68494683bae214fadaa2b4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取对应的配置，查询医嘱，若打开超时配置，根据医嘱显示列配置第8.1项展示，否则按医嘱显示列配置第8项展示。</p>
+<h5><a id="3489__1767"></a>3.4.8.9 手术查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/6729500716d04877a5981527dfaca507.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取对应的配置，查询医嘱，按医嘱显示列配置第5项展示。</p>
+<h5><a id="34810__1771"></a>3.4.8.10 其他医嘱</h5>
+<p><img src="https://img-blog.csdnimg.cn/232048d9b5c84dbf9cffb24316fe3349.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+参照口服用药查询逻辑（3.4.8.4），读取对应的配置，查询医嘱，按医嘱显示列配置第12项展示。</p>
+<h4><a id="349__1775"></a>3.4.9 检验报告</h4>
+<h5><a id="3491__1776"></a>3.4.9.1 涉及到的配置：</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">INSPECT_REPORT_CONFIG_VALUE</td>
+<td align="center"></td>
+<td align="center">检验报告查询条件</td>
+</tr>
+<tr>
+<td align="center">CIV_LAB_REPORT_DETAIL_HEAD</td>
+<td align="center"></td>
+<td align="center">检验报告表头设置</td>
+</tr>
+<tr>
+<td align="center">CIV_LAB_REPORT_DETAIL_FIELD</td>
+<td align="center"></td>
+<td align="center">检验报告细项列表字段设置</td>
+</tr>
+<tr>
+<td align="center">HDR_LAB_REPORT_DETAIL_SORT</td>
+<td align="center">默认值：<code>TEST_NO</code></td>
+<td align="center">检验报告细项列表排序字段</td>
+</tr>
+</tbody>
+</table><p><code>INSPECT_REPORT_CONFIG_VALUE</code>示例,多个条件以英文分号分隔。</p>
+<pre><code>格式：#{字段},#{操作符},#{值1}/,#{值2}/,#{值3};
+</code></pre>
+<p><code>CIV_LAB_REPORT_DETAIL_HEAD</code>示例：</p>
+<pre><code>[{"name":"index","display":"序号"},{"name":"labSubItemCode","display":"代码"},{"name":"labSubItemName","display":"项目名称"},{"name":"labResultValue","display":"结果"},{"name":"range","display":"参考范围"},{"name":"labResultUnit","display":"单位"},{"name":"operation","display":"操作"},{"name":"testNo","display":"TEST_NO"}]
+</code></pre>
+<p><code>CIV_LAB_REPORT_DETAIL_FIELD</code>示例：</p>
+<pre><code>ROWKEY,LAB_SUB_ITEM_CODE,LAB_SUB_ITEM_NAME,RANGE,LAB_RESULT_UNIT,LAB_RESULT_VALUE,LAB_QUAL_RESULT,RESULT_STATUS_CODE,MICRO_ITEM_NAME,LAB_YM_RESULT,LAB_YM_NAME,TEST_NO
+</code></pre>
+<h5><a id="3492__1799"></a>3.4.9.2 对应接口：</h5>
+<p><img src="https://img-blog.csdnimg.cn/9fd8158a8b684979b93162e6a6fe7e95.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="3493__1801"></a>3.4.9.3 检验报告列表查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/77a68a44e1724645b32c78511870550a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/4c09f825316d4994b73f818153ac13f4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据<code>pid</code>、<code>VISIT_ID</code>结合查询条件：{<code>VISIT_TYPE_CODE</code>=02或01（住院02，门诊01）}，再读取配置<code>INSPECT_REPORT_CONFIG_VALUE</code> 增加查询条件，从<code>HDR_LAB_REPORT</code>查询字段</p>
+<pre><code>"LAB_ITEM_NAME", "REPORT_TIME", "REPORT_NO"
+</code></pre>
+<p>再根据pid和<code>REPORT_NO</code>查询<code>HDR_LAB_REPORT_DETAIL</code>表，获取字段：</p>
+<pre><code>"REPORT_NO",  "RESULT_STATUS_CODE"
+</code></pre>
+<p>根据<code>RESULT_STATUS_CODE</code>显示箭头（一共4种状态高、低、过高、过低，对应4种取值H、L、HH、LL），并统计每种状态的数量显示出来。<br>
+<img src="https://img-blog.csdnimg.cn/654b9ad65f134ffc8d5fb083ef7f3688.png" alt="在这里插入图片描述"></p>
+<h5><a id="3494__1816"></a>3.4.9.4 检验报告详情查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/7bfae17b996b4a17801a1f614f878caf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/c52e2043c9f048cb8cee4dadd37b7b6d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据pid和<code>REPORT_NO</code>查询<code>HDR_LAB_REPORT</code>表，获取字段</p>
+<pre><code>LAB_TYPE_NAME", "SAMPLE_NO", "SAMPLE_TIME", "SPECIMAN_TYPE_NAME","LAB_PERFORMED_TIME", "LAB_ITEM_NAME", "REPORT_TIME", "APPLY_NO", "APPLY_DOCTOR_NAME", "APPLY_DEPT_NAME", "APPLY_TIME", "NOTE","SPEC_CONFIRM_TIME","PERFORMED_DOCTOR_NAME"
+</code></pre>
+<p>再根据pid和<code>REPORT_NO</code>查询表<code>HDR_LAB_REPORT_DETAIL</code>获取<code>CIV_LAB_REPORT_DETAIL_FIELD</code>配置的字段。<br>
+如果<code>LAB_RESULT_VALUE</code>不为空，且为数字时，显示趋势图；若该值为空，显示<code>LAB_QUAL_RESULT</code>的值。</p>
+<p>将获取的字段跟<code>CIV_LAB_REPORT_DETAIL_HEAD</code>的值一起传回给前端展示。</p>
+<h4><a id="3410__1830"></a>3.4.10 检查报告</h4>
+<h5><a id="34101__1831"></a>3.4.10.1 涉及配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_PATHOLOGY_VALUE</td>
+<td align="center">病理报告的<code>EXAM_CLASS_CODE</code>，多个值之间用正斜杠分隔</td>
+<td align="center">病理报告的类型</td>
+</tr>
+<tr>
+<td align="center">EXAM_STATUS_CONFIG</td>
+<td align="center"><code>#{字段}|操作符|值</code>，多个条件之间用英文分号连接</td>
+<td align="center">自定义查询条件</td>
+</tr>
+<tr>
+<td align="center">CIV_CHECK_REPORT_URL_CONFIG</td>
+<td align="center"></td>
+<td align="center">检查报告查看检查报告和影像浏览</td>
+</tr>
+<tr>
+<td align="center">CIV_CHECK_REPORT_URL_PARAM_CONFIG</td>
+<td align="center">true或false</td>
+<td align="center">检查报告查看检查报告和影像浏览的登录用户配置</td>
+</tr>
+</tbody>
+</table><p><code>CIV_CHECK_REPORT_URL_CONFIG</code>示例，“查看检查报告” 对应页面显示文字，<code>PACS_URL</code>对应数据库检查报告URL的字段。</p>
+<pre><code>查看检查报告,PACS_URL|影像浏览,PACS_IMG_URL
+</code></pre>
+<p><code>CIV_CHECK_REPORT_URL_CONFIG</code>效果：<br>
+<img src="https://img-blog.csdnimg.cn/b7010dd217d24ef288ad348fd6dc2d15.png" alt="在这里插入图片描述"></p>
+<p><code>CIV_CHECK_REPORT_URL_PARAM_CONFIG</code>为true时，继续判断：如果<code>CIV_CHECK_REPORT_URL_CONFIG</code>的URL字段的值中含有<code>？</code>时，则读取当前登陆用户code,并在url后拼接<code>&amp;loginName= #{username}</code>。</p>
+<h5><a id="34102__1850"></a>3.4.10.2 对应接口</h5>
+<p><img src="https://img-blog.csdnimg.cn/5ba21c59014c42508eb55a9640f34037.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="34103__1852"></a>3.4.10.3 左侧报告列表查询逻辑</h5>
+<p><img src="https://img-blog.csdnimg.cn/c407f6f9b4e94513b38fb6dbfed0128b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+对应接口：<code>check_getPatientVisitChecks</code></p>
+<p>非管理员用户，先根据当前登陆用户的code值查询用户关于检查报告的权限（参照上文3.2.3），得到mysql权限表中的<code>EXAM_CLASS_CODE</code>列表（简称权限列表）；管理员用户无限制，不用读权限。设置查询条件：{<code>EXAM_CLASS_CODE</code> 包含 权限列表}<br>
+读取配置<code>CIV_PATHOLOGY_VALUE</code>，得到病理列表，增设查询条件：{EXAM_CLASS_CODE 不包含 病理列表}。在控制台查询时，记得将正斜杠转化为英文逗号。<br>
+<img src="https://img-blog.csdnimg.cn/f0920e9ef1f54602b863e2654541bd6f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+读取配置<code>EXAM_STATUS_CONFIG</code>，获取自定于查询条件</p>
+<p>根据pid、vid、vtypecode结合查询条件，查询表<code>HDR_EXAM_REPORT</code>，获取字段展示：</p>
+<pre><code>"EXAM_ITEM_CODE", "EXAM_ITEM_NAME", "REPORT_TIME", "EXAM_DIAG", "ORDER_NO", "REPORT_NO", "IN_PATIENT_ID", "OUT_PATIENT_ID", "VISIT_ID"
+</code></pre>
+<h5><a id="34104__1867"></a>3.4.10.4 检查报告详情查询逻辑</h5>
+<p>对应接口：<code>check_getCheckDetails</code></p>
+<p>根据pid、vid、reportNo查询<code>HDR_EXAM_REPORT</code>表，获取字段</p>
+<pre><code>"EXAM_CLASS_NAME", "EXAM_ITEM_NAME", "ORDER_NO", "EXAM_PART_NAME", "EXAM_PERFORM_TIME", "EXAM_FEATURE", "EXAM_DIAG", "REPORT_TIME", "REPORT_DOCTOR_NAME", "PACS_URL", "VISIT_TYPE_CODE", "EXAM_CLASS_CODE", "OUTP_NO", "INP_NO", "PACS_IMG_URL", "APPLY_DOCTOR_NAME", "APPLY_DEPT_NAME", "APPLY_TIME", "REPORT_CONFIRMER_NAME", "REPORT_CONFIRM_TIME"
+</code></pre>
+<p>通过读取<code>CIV_CHECK_REPORT_URL_CONFIG</code>，<code>CIV_CHECK_REPORT_URL_PARAM_CONFIG</code>配置再继续处理报告的URL，将最终结果一起返回给前端展示。</p>
+<h4><a id="3411__1876"></a>3.4.11 病理报告</h4>
+<h5><a id="34111__1877"></a>3.4.11.1 对应接口</h5>
+<p><img src="https://img-blog.csdnimg.cn/777fdf6750a3474c85683a96cfb5f239.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="34112__1879"></a>3.4.11.2 涉及配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_EXAM_VALUE</td>
+<td align="center">检查报告的<code>EXAM_CLASS_CODE</code>，多个值之间用正斜杠分隔</td>
+<td align="center">检查报告的类型</td>
+</tr>
+<tr>
+<td align="center">CIV_PATHOLOGY_REPORT_URL_CONFIG</td>
+<td align="center"></td>
+<td align="center">查看病理报告和影像浏览 配置</td>
+</tr>
+</tbody>
+</table><p><code>CIV_PATHOLOGY_REPORT_URL_CONFIG</code>示例，效果参照检查报告对应配置。</p>
+<pre><code>查看病理报告,PACS_URL|病理新系统,PACS_URL2|病理科检查,PACS_URL3
+</code></pre>
+<h5><a id="34113__1890"></a>3.4.11.3 病理报告列表查询逻辑</h5>
+<p>对应接口：<code>pathology_getPatientVisitPathology</code><br>
+跟检查报告如出一辙（参照3.4.10.3节）<br>
+非管理员用户，先根据当前登陆用户的code值查询用户关于检查报告的权限（参照上文3.2.3），得到mysql权限表中的<code>EXAM_CLASS_CODE</code>列表（简称权限列表）；管理员用户无限制，不用读权限。设置查询条件：{<code>EXAM_CLASS_CODE</code> 包含 权限列表}<br>
+读取配置<code>CIV_EXAM_VALUE</code>，得到检查报告类型列表，增设查询条件：{EXAM_CLASS_CODE 不包含 检查报告类型列表}。在控制台查询时，记得将正斜杠转化为英文逗号。</p>
+<p>读取配置<code>EXAM_STATUS_CONFIG</code>，获取自定于查询条件</p>
+<p>根据pid、vid、vtypecode结合查询条件，查询表<code>HDR_EXAM_REPORT</code>，获取字段展示：</p>
+<pre><code>"EXAM_ITEM_CODE", "EXAM_ITEM_NAME", "REPORT_TIME", "EXAM_DIAG", "ORDER_NO", "REPORT_NO"
+</code></pre>
+<h5><a id="34114__1904"></a>3.4.11.4 病理报告详情查询逻辑</h5>
+<p>对应接口：<code>pathology_getPathologyDetails</code></p>
+<p>根据pid、vid、reportNo查询<code>HDR_EXAM_REPORT</code>表，获取字段</p>
+<pre><code>"EXAM_CLASS_NAME", "EXAM_ITEM_NAME", "ORDER_NO", "EXAM_PART_NAME", "EXAM_PERFORM_TIME","EXAM_FEATURE", "EXAM_DIAG", "REPORT_TIME", "REPORT_DOCTOR_NAME", "PACS_URL", "VISIT_TYPE_CODE","EXAM_CLASS_CODE", "OUTP_NO", "INP_NO", "PACS_IMG_URL", "APPLY_TIME", "APPLY_DOCTOR_NAME", "APPLY_DEPT_NAME", "REPORT_CONFIRMER_NAME", "REPORT_CONFIRM_TIME"
+</code></pre>
+<p>通过读取<code>CIV_CHECK_REPORT_URL_CONFIG</code>，配置再继续处理报告的URL，将最终结果一起返回给前端展示。</p>
+<h4><a id="3412__1913"></a>3.4.12 病历文书</h4>
+<h5><a id="34121__1914"></a>3.4.12.1 对应接口</h5>
+<p><img src="https://img-blog.csdnimg.cn/c5ae4dec49c647f0b5a977194b08868e.png" alt="在这里插入图片描述"></p>
+<h5><a id="34122__1917"></a>3.4.12.2 涉及配置</h5>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">EMR_VIEW_CONFIG</td>
+<td align="center">filer格式，多个条件用英文逗号分隔</td>
+<td align="center">自定义病历文书查询条件</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_FIRST_DATA_SOURCE</td>
+<td align="center">DG或HTML</td>
+<td align="center">病历文书展示优先数据源配置</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_IN_ISCALL</td>
+<td align="center">true或false</td>
+<td align="center">住院电子病历是否外部调用(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_OUT_ISCALL</td>
+<td align="center">true或false</td>
+<td align="center">门诊电子病历是否外部调用(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_IN_ISCALL_TYPE</td>
+<td align="center">ws</td>
+<td align="center">住院电子病历外部调用类型(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_OUT_ISCALL_TYPE</td>
+<td align="center">ws</td>
+<td align="center">门诊电子病历外部调用类型(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_IN_ISCALL_URL</td>
+<td align="center"></td>
+<td align="center">住院电子病历webservice外部调用url(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">CIV_EMR_OUT_ISCALL_URL</td>
+<td align="center"></td>
+<td align="center">门诊电子病历webservice外部调用url(个性化需求)</td>
+</tr>
+<tr>
+<td align="center">MR_HTML_COMMON_MODEL</td>
+<td align="center"></td>
+<td align="center">电子病历通用模版</td>
+</tr>
+</tbody>
+</table><p><code>EMR_VIEW_CONFIG</code>示例：</p>
+<pre><code>DELETE_FLAG|&lt;&gt;|1
+</code></pre>
+<h5><a id="34123__1934"></a>3.4.12.3 病历文书列表按时间排序查询逻辑</h5>
+<p>对应接口：<code>mr_getPatientVisitMrs</code><br>
+跟检查报告如出一辙（参照3.4.10.3节）<br>
+非管理员用户，先根据当前登陆用户的code值查询用户关于检查报告的权限（参照上文3.2.3），得到mysql权限表中的<code>MR_CLASS_CODE</code>列表（简称权限列表）；管理员用户无限制，不用读权限。设置查询条件：{<code>MR_CLASS_CODE</code> 包含 权限列表}</p>
+<p>读取配置<code>EMR_VIEW_CONFIG</code>，获取自定义查询条件</p>
+<p>根据pid、vid、vtypecode结合查询条件，查询表<code>HDR_EMR_CONTENT</code>，获取字段展示：</p>
+<pre><code>"FIRST_MR_SIGN_DATE_TIME", "CREATOR_NAME", "TOPIC", "VISIT_TYPE_CODE","FILE_FLAG", "MR_CLASS_CODE", "MR_CLASS_NAME", "CREATE_DATE_TIME", "IN_PATIENT_ID", "OUT_PATIENT_ID", "VISIT_ID", "FILE_NO", "FILE_UNIQUE_ID", "FFILE_CLASS"
+</code></pre>
+<h5><a id="34124__1947"></a>3.4.12.4 病历文书列表按类型排序查询逻辑</h5>
+<p>对应接口：<code>mr_getPatientVisitMrsByMrClass</code><br>
+<img src="https://img-blog.csdnimg.cn/0e5322a7e5244ba68f7d1ca190a8b297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+读取配置<code>EMR_VIEW_CONFIG</code>，获取自定义查询条件</p>
+<p>根据pid、vid、vtypecode结合查询条件，查询表<code>HDR_EMR_CONTENT</code>，获取字段展示：</p>
+<pre><code>"FIRST_MR_SIGN_DATE_TIME", "CREATOR_NAME", "TOPIC", "VISIT_TYPE_CODE","FILE_FLAG", "MR_CLASS_CODE", "MR_CLASS_NAME", "CREATE_DATE_TIME", "IN_PATIENT_ID", "OUT_PATIENT_ID", "VISIT_ID", "FILE_NO", "FILE_UNIQUE_ID", "FFILE_CLASS"
+</code></pre>
+<h5><a id="34125__1958"></a>3.4.12.5 病历文书详情查询逻辑</h5>
+<p>对应接口：<code>mr_getMrDetails</code><br>
+<img src="https://img-blog.csdnimg.cn/e8daa17be2754bb7bb1d083ed18277d9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+根据pid结合前端传入的<code>VISIT-ID</code>、<code>FILE_NO</code>、<code>MR_CLASS_CODE</code>的值查询表<code>HDR_EMR_CONTENT</code>，获取字段：</p>
+<pre><code>"MR_CONTENT_HTML", "FILE_UNIQUE_ID", "FILE_NAME", "FILE_NO", "IN_PATIENT_ID", "VISIT_ID", "VISIT_TYPE_CODE", "OUT_PATIENT_ID", "URL", "FFILE_CLASS"
+</code></pre>
+<p>根据就诊类型读取电子病历是否外部调用的配置(3.4.12.2 节)，如果true,即走webservice调用，查出数据结束。医院个性化需求，不再赘述。<br>
+否则，即为非外部webservice调用。此时，先读取系统编码为<code>RM</code>的调用第三方url配置（参照3.4.1.2.4 节），若url不为空，调用url展示，结束。<br>
+否则，判断从<code>HDR_EMR_CONTENT</code>查询的<code>URL</code>字段是否为空。若不为空，则调用url展示，结束。<br>
+否则，读取<code>CIV_EMR_FIRST_DATA_SOURCE</code>配置。</p>
+<ul>
+<li>
+<p><code>CIV_EMR_FIRST_DATA_SOURCE</code>配置的值为<code>HTML</code>时，继续判断之前查询结果中<code>FFILE_CLASS</code>字段是<code>PDF</code>吗？是<code>PDF</code>，在项目根目录下（默认hdr-civ/）生成目录pdf_datas/，将<code>MR_CONTENT_HTML</code>字段的值转成PDF存进该目录下，待前端展示；不是<code>PDF</code>，直接展示<code>MR_CONTENT_HTML</code>字段的值。</p>
+</li>
+<li>
+<p><code>CIV_EMR_FIRST_DATA_SOURCE</code>的值为<code>DG</code>时，根据前端传入的<code>mrClassCode</code>先查询mysql中电子病历章节模板：</p>
+</li>
+</ul>
+<pre><code>SELECT  hedh.emr_class_code,hedh.emr_class_name,hedh.html_text,hed.dg_code,hed.dg_name FROM hdr_emr_dg_html hedh left join hdr_emr_dg hed on  hed.emr_class_code= hedh.emr_class_code WHERE hedh.emr_class_code = ? AND hedh.is_enabled = 'Y' 
+</code></pre>
+<p>然后根据前端传入的pid、vid、fileNo、mrClassCode查询表<code>HDR_EMR_CONTENT_DG</code>，获取字段：</p>
+<pre><code>"DG_CODE", "DG_NAME", "FILE_NAME", "FILE_NO", "DG_PLAIN_CONTENT", "FILE_UNIQUE_ID"
+</code></pre>
+<p>若从mysql中查出的模板不为空，则用表中数据填充该模板展示。<br>
+否则，读取配置<code>MR_HTML_COMMON_MODEL</code>，获得通用模板，填充模板展示。</p>
+<h4><a id="3413__1984"></a>3.4.13 手术记录</h4>
+<h5><a id="34131__1985"></a>3.4.13.1 手术列表</h5>
+<p>手术列表展示的是<strong>住院手术</strong>，门诊手术一般不在手术系统中，无法展示。</p>
+<h6><a id="341311_1987"></a>3.4.13.1.1对应接口</h6>
+<p>根据pid和vid查询<code>HDR_OPER_ANAES</code>表，获取字段展示：</p>
+<pre><code>"OPER_START_TIME", "OPERATION_CODE", "OPERATION_NAME", "OPER_NO", "ORDER_NO", "INP_NO"
+</code></pre>
+<h5><a id="34132__1992"></a>3.4.13.2 手术信息</h5>
+<h6><a id="341321__1993"></a>3.4.13.2.1 对应接口</h6>
+<p><img src="https://img-blog.csdnimg.cn/f37714480b29467e92314ff7eb23302f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="341322__1995"></a>3.4.13.2.2 涉及配置</h6>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_OPER_CONFIG</td>
+<td align="center">默认值：OperVisit,1;OperProcess,1;OperAfter,1；对应项改成0则表示不显示</td>
+<td align="center">手术信息内容设置</td>
+</tr>
+</tbody>
+</table><h6><a id="341323__1999"></a>3.4.13.2.3 术前</h6>
+<p><img src="https://img-blog.csdnimg.cn/791a9c2924cf464189d2b6782890cccf.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>获取术前访视<br>
+数据来源接口：<code>oper_getOperVisit</code><br>
+对应页面：<br>
+<img src="https://img-blog.csdnimg.cn/8e32b6603a81461cbc8526fb4e728346.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+先根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表<code>HDR_OPER_VISIT</code>。<br>
+<img src="https://img-blog.csdnimg.cn/edd049135f154efaa95c6b526b722710.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+<li>获取术前麻醉<br>
+数据来源接口：<code>oper_getOperAnaes</code><br>
+对应页面：<br>
+<img src="https://img-blog.csdnimg.cn/002ed5eea47f4ba4822005e3be536a04.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+先根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表<code>HDR_OPER_ANAES</code>。</li>
+</ul>
+<h6><a id="341324__2014"></a>3.4.13.2.4 术中</h6>
+<p><img src="https://img-blog.csdnimg.cn/3584dbf5aff14327a7907d0ca9a074d5.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>术中信息<br>
+数据来源接口：<code>oper_getOperProcess</code><br>
+对应页面：<br>
+<img src="https://img-blog.csdnimg.cn/5afbdf9bc7344d6bbfc7237a79bee2e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表：<code>HDR_OPER_ANAES</code>，获取手术过程。<br>
+根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表：<code>HDR_OPER_AFTER</code>，获取术后访视部分字段：</li>
+</ul>
+<pre><code>"OPER_TRSFU_AMOUNT_VALUE", "OPER_URINE_VOLUME_VALUE", "OPER_OTHER_NOTE", "OPER_DURATION","ORDER_NO"
+</code></pre>
+<p>将2部分数据封装起来，返回给前端展示。</p>
+<ul>
+<li>术中用药<br>
+数据来源接口：<code>oper_getOperDrug</code><br>
+对应页面：<br>
+<img src="https://img-blog.csdnimg.cn/6c67f41bc33f48788ae94e5f393780c8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表：<code>HDR_OPER_PHARMACY</code></li>
+</ul>
+<h6><a id="341325__2034"></a>3.4.13.2.5 术后</h6>
+<p><img src="https://img-blog.csdnimg.cn/e22cd29000094394bccade7a438e086a.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>术后访视<br>
+数据来源接口：<code>oper_getOperAfter</code><br>
+页面显示：<br>
+<img src="https://img-blog.csdnimg.cn/e696bf39e3d8457ba8dc7f1767dc0c70.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表：<code>HDR_OPER_AFTER</code>。</li>
+<li>术后恢复<br>
+数据来源接口：<code>oper_getOperRecovery</code><br>
+页面显示：<br>
+<img src="https://img-blog.csdnimg.cn/bcc3dd6a2b5d454e9a4392ddfb62e259.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表<code>HDR_OPER_RECOVERY</code>获取恢复室数据。<br>
+再根据pid结合医嘱号orderNo查询,未查询到数据，再结合手术序号operNo查询。查询表<code>HDR_OPER_ANALGESIC</code>获取镇痛数据。<br>
+将2部分数据封装起来，返回给前端展示。</li>
+</ul>
+<h5><a id="34133__2050"></a>3.4.13.3 手术麻醉单</h5>
+<h6><a id="341331__2051"></a>3.4.13.3.1 对应接口</h6>
+<p><img src="https://img-blog.csdnimg.cn/9bb6ee2ef7a54f9398eddf2f39a1f5a3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h6><a id="341332__2053"></a>3.4.13.3.2 涉及配置</h6>
+<p>配置第三方url相关的配置项，参照新增模块那一节中url相关的配置（3.4.1.2.4 节）,系统编码为“ANES”。</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_ANESTHESIA_SELECT_CONFIG</td>
+<td align="center"></td>
+<td align="center">手术麻醉单下拉框配置</td>
+</tr>
+</tbody>
+</table><p><code>CIV_ANESTHESIA_SELECT_CONFIG</code>示例：</p>
+<pre><code>ANES_IMG_1=麻醉前访视记录;ANES_IMG_2=麻醉后随访记录;ANES_IMG_3=麻醉记录单
+</code></pre>
+<p><code>CIV_ANESTHESIA_SELECT_CONFIG</code>效果：<br>
+<img src="https://img-blog.csdnimg.cn/2d0161aaa4734641a926e2a5a56903a5.png" alt="在这里插入图片描述"></p>
+<h6><a id="341333__2065"></a>3.4.13.3.3 查询逻辑</h6>
+<p>先尝试获取url，若有值，则返回给前端调用。<br>
+若未配置url，查询hbase获取数据。<br>
+先读取配置<code>CIV_ANESTHESIA_SELECT_CONFIG</code>，获取要展示的图片类型列表。<br>
+根据pid结合<code>OPER_NO</code>查询<code>HDR_OPER_ANAES</code>表，将配置的图片类型的数据生成图片，存在hdr-civ/smd-img文件夹中供前端展示。</p>
+<h4><a id="3414__2070"></a>3.4.14 护理记录</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/da6eb15d4ddf4a35a5284a7546039c98.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="34141__2073"></a>3.4.14.1 护理类型</h5>
+<p>来源接口：<code>nursing_getNurseType</code><br>
+页面效果：<br>
+<img src="https://img-blog.csdnimg.cn/ee8b6a61aa4347bd80b85439c64fe931.png" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid、vid、vtype查询<code>HDR_NURSE_CONTENT</code>表，获取字段：</p>
+<pre><code>"NR_CODE", "NR_NAME"
+</code></pre>
+<p>再根据3.4.1.1 节获取的所有的vtype|pid组合，结合vid查询<code>HDR_NURSE_CONTENT</code>表，获取字段：</p>
+<pre><code>"NR_CODE", "NR_NAME"
+</code></pre>
+<p>将所有的字段值去重后返回给前端展示。</p>
+<h5><a id="34142__2088"></a>3.4.14.2 护理列表</h5>
+<p>来源接口：<code>nursing_getNurseList</code><br>
+页面效果：<br>
+<img src="https://img-blog.csdnimg.cn/25edf8579d874f6bbf0710dc9747b1ae.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid、vid、vtype查询<code>HDR_NURSE_CONTENT</code>表，获取字段：</p>
+<pre><code>"LAST_MODIFY_DATE_TIME", "NR_NAME"
+</code></pre>
+<p>再根据3.4.1.1 节获取的所有的vtype|pid组合，结合vid查询<code>HDR_NURSE_CONTENT</code>表，获取字段：</p>
+<pre><code>"LAST_MODIFY_DATE_TIME", "NR_NAME"
+</code></pre>
+<p>将所有的字段值去重后返回给前端展示。</p>
+<h5><a id="34143__2103"></a>3.4.14.3 护理详情</h5>
+<p>来源接口：<code>nursing_getNurseDetail</code><br>
+页面效果：<br>
+<img src="https://img-blog.csdnimg.cn/45cea1328c8045e584c01aff207e3933.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+涉及配置：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CIV_NURSE_TABLE_FIELD</td>
+<td align="center">存在默认值</td>
+<td align="center">护理详情查询字段配置</td>
+</tr>
+</tbody>
+</table><p><code>CIV_NURSE_TABLE_FIELD</code>默认配置：</p>
+<pre><code>"NR_NAME,CAPTION_DATE_TIME,CREATOR_NAME,NR_CONTENT_HTML,CREATE_DATE_TIME,LAST_MODIFY_DATE_TIME,URL,FFILE_CLASS"
+</code></pre>
+<p>查询逻辑：<br>
+<img src="https://img-blog.csdnimg.cn/e87f51428ec9439bbfaac29e6ab69a49.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>根据前端传参拼接查询条件：{<code>LAST_MODIFY_DATE_TIME</code> 大于等于 #{date} 00:00:00 ，<code>LAST_MODIFY_DATE_TIME</code>小于等于 #{date} 23:59:59 }<br>
+再结合所有的pid查询表<code>HDR_NURSE_CONTENT</code>获取配置<code>CIV_NURSE_TABLE_FIELD</code>的字段。<br>
+根据<code>FFILE_CLASS</code>的取值，来展示不同类型的数据（URL、PDF或HTML，默认为HTML）。</p>
+<h4><a id="3415__2123"></a>3.4.15 过敏记录</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/12cafc2eab044e3b9c5313e4dda51df9.png" alt="在这里插入图片描述"></p>
+<h5><a id="34151__2127"></a>3.4.15.1 过敏类型</h5>
+<p>来源接口：<code>allergy_getAllergyTypes</code><br>
+涉及配置：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ALLERGY_TYPE</td>
+<td align="center">有默认值</td>
+<td align="center">过敏类型</td>
+</tr>
+</tbody>
+</table><p><code>ALLERGY_TYPE</code>默认值：</p>
+<pre><code>1|一般药物过敏;2|特殊药物过敏;3|药物成分过敏;4|食物过敏;5|海鲜过敏;6|花粉过敏;7|不明
+</code></pre>
+<p>页面效果：<br>
+<img src="https://img-blog.csdnimg.cn/67343921a54c40069fdf169e8d0b0ce1.png" alt="在这里插入图片描述"></p>
+<h5><a id="34152__2141"></a>3.4.15.2 过敏程度</h5>
+<p>来源接口：<code>allergy_getAllergySeverity</code><br>
+涉及配置：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ALLERGY_SEVERITY</td>
+<td align="center">有默认值</td>
+<td align="center">过敏程度</td>
+</tr>
+</tbody>
+</table><p>ALLERGY_SEVERITY默认配置：</p>
+<pre><code>1|轻度;2|中度;3|严重
+</code></pre>
+<p>页面效果：<br>
+<img src="https://img-blog.csdnimg.cn/e8754e9be96f4717abecebbe337013c6.png" alt="在这里插入图片描述"></p>
+<h5><a id="34153__2154"></a>3.4.15.3 过敏列表</h5>
+<p>来源接口：<code>allergy_getAllergyList</code><br>
+查询逻辑：<br>
+根据pid、vid、vtype结合页面输入的条件，查询表<code>HDR_ALLERGY</code>，获取字段展示：</p>
+<pre><code>"ALLERGY_CATEGORY_NAME", "ALLERGEN", "ALLERGEN_NAME", "ALLERGY_REASON", "ALLERGY_REASON_NAME","ALLERGY_REACTION", "ALLERGY_SEVERITY", "ALLERGY_SEVERITY_NAME", "OPERATOR_NURSE","OPERATOR_NURSE_NAME", "OPERATE_NURSE_TIME", "RECORD_PERSON", "RECORD_PERSON_NAME", "RECORDTIME","ALLERGY_NAME"
+</code></pre>
+<h4><a id="3416__2162"></a>3.4.16 费用明细</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/26ac6907bc404babab001ee3d3d6b0dc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h5><a id="34161__2165"></a>3.4.16.1 费用类型</h5>
+<p>来源接口：<code>visit_getPatientInpSummaryFeeTypes</code></p>
+<p>查询逻辑：</p>
+<p>门诊患者查询表： <code>HDR_OUT_CHARGE</code><br>
+住院患者查询表：<code>HDR_IN_CHARGE</code><br>
+根据前端传入的pid、vid、vtype查询对应表，获取字段,返回给前端展示：</p>
+<pre><code>"BILL_ITEM_CODE", "BILL_ITEM_NAME"
+</code></pre>
+<h5><a id="34162__2178"></a>3.4.16.2 费用明细列表</h5>
+<p>来源接口：<code>visit_getPatientInpSummaryFeeDetail</code><br>
+涉及配置：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FEE_TABLE_IN_CHARGE_CONFIG</td>
+<td align="center">json</td>
+<td align="center">住院费用表头配置</td>
+</tr>
+<tr>
+<td align="center">FEE_TABLE_OUT_CHARGE_CONFIG</td>
+<td align="center">json</td>
+<td align="center">门诊费用表头配置</td>
+</tr>
+</tbody>
+</table><p><code>FEE_TABLE_IN_CHARGE_CONFIG</code>示例：</p>
+<pre><code>[{"display":"编码","key":true,"hidden":true,"name":"code"},{"display":"项目编码","name":"project_code","column":"BILL_ITEM_CODE"},{"display":"项目名称","name":"name","column":"BILL_ITEM_NAME"},{"display":"计费时间","name":"time","column":"CHARGE_TIME"},{"display":"单价","name":"price","column":"CHARGE_ITEM_PRICE"},{"display":"单位","name":"cell","column":"DRUG_AMOUNT_UNIT"},{"display":"数量","name":"account","column":"CHARGE_AMOUNT_VALUE"},{"display":"总金额","name":"totl_account","column":"CHARGE_FEE"},{"display":"计费人","name":"order_status","column":"CHARGE_OPER_NAME"},{"display":"开单医生","name":"doctor","column":"ORDER_DOCTOR_NAME"}]
+</code></pre>
+<p><code>FEE_TABLE_OUT_CHARGE_CONFIG</code>示例：</p>
+<pre><code>[{"display":"编码","key":true,"hidden":true,"name":"code"},{"display":"项目编码","name":"project_code","column":"BILL_ITEM_CODE"},{"display":"项目名称","name":"name","column":"BILL_ITEM_NAME"},{"display":"计费时间","name":"time","column":"CHARGE_TIME"},{"display":"单价","name":"price","column":"CHARGE_ITEM_PRICE"},{"display":"单位","name":"cell","column":"DRUG_AMOUNT_UNIT"},{"display":"数量","name":"account","column":"CHARGE_AMOUNT_VALUE"},{"display":"总金额","name":"totl_account","column":"CHARGE_FEE"},{"display":"计费人","name":"order_status","column":"CHARGE_OPER_NAME"},{"display":"开单医生","name":"doctor","column":"ORDER_DOCTOR_NAME"}]
+</code></pre>
+<p>查询逻辑：<br>
+门诊患者查询表： <code>HDR_OUT_CHARGE</code><br>
+住院患者查询表：<code>HDR_IN_CHARGE</code><br>
+若选择了某种费用类型，则根据页面输入的条件，拼接查询条件：{<code>BILL_ITEM_CODE</code> 等于 #{feeType}}<br>
+根据pid,vid,vtype结合查询条件查询对应表，获取全部字段，将字段按对应类型的费用表头配置映射，返回给前端展示。</p>
+<h4><a id="3417__2205"></a>3.4.17 临床用血</h4>
+<p><img src="https://img-blog.csdnimg.cn/dd58034fd2b14f989979e94528039b37.png" alt="在这里插入图片描述"><br>
+涉及配置：</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">配置项</th>
+<th align="center">取值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">BLOOD_APPLY_VIEW_DISPLAY_COLUMN</td>
+<td align="center">json</td>
+<td align="center">临床用血 输血申请显示列配置</td>
+</tr>
+<tr>
+<td align="center">PREPARE_BLOOD_DISPLAY_COLUMN</td>
+<td align="center">json</td>
+<td align="center">临床用血 配血记录显示列配置</td>
+</tr>
+<tr>
+<td align="center">BLOOD_VIEW_COLUMN</td>
+<td align="center">json</td>
+<td align="center">临床用血  输血记录显示列配置</td>
+</tr>
+</tbody>
+</table><p><code>BLOOD_APPLY_VIEW_DISPLAY_COLUMN</code> 示例：</p>
+<pre><code>[{"display":"申请人","name":"PERSON","field":"APPLY_PERSON"},{"display":"申请日期","name":"APPLY_DATE","field":"APPLY_DATE"},{"display":"Abo血型","name":"APPLY_BLOOD_ABO_TYPE","field":"APPLY_BLOOD_ABO_TYPE"},{"display":"RH血型","name":"APPLY_BLOOD_RH_TYPE","field":"APPLY_BLOOD_RH_TYPE"},{"display":"输血目的","name":"BLOOD_TRAN_PURPOSE","field":"BLOOD_TRAN_PURPOSE"},{"display":"预计用血时间","name":"PLAN_TIME_BLOOD","field":"PLAN_TIME_BLOOD"}]
+</code></pre>
+<p><code>PREPARE_BLOOD_DISPLAY_COLUMN</code>示例：</p>
+<pre><code>[{"display":"配血员","name":"PERPARE_EM_NAME","field":"PERPARE_BLOOD_EM_NAME"},{"display":"配血时间","name":"PERPARE_BLOOD_TIME","field":"PERPARE_BLOOD_TIME"},{"display":"血液成分","name":"BLOOD_COMPONENTS_NAME","field":"BLOOD_COMPONENTS_NAME"},{"display":"血液数量","name":"BLOOD_VOLUME","field":"BLOOD_VOLUME"},{"display":"血液数量单位","name":"BLOOD_VOLUME_UNIT","field":"BLOOD_VOLUME_UNIT"},{"display":"交叉配血方法","name":"CROSS_MATCH_BLOOD_METHOD_NAME","field":"CROSS_MATCH_BLOOD_METHOD_NAME"},{"display":"配血结果","name":"CROSS_MATCH_BLOOD_RESULT_NAME","field":"CROSS_MATCH_BLOOD_RESULT_NAME"}]
+</code></pre>
+<p><code>BLOOD_VIEW_COLUMN</code>示例：</p>
+<pre><code>[{"display":"医嘱序号","name":"ORDER_NO","field":"ORDER_NO"},{"display":"申请医师","name":"APPLY_DOCTOR_NAME","field":"APPLY_DOCTOR_NAME"},{"display":"输血成分","name":"PLAN_BLOOD_COMPONENTS","field":"PLAN_BLOOD_COMPONENTS"},{"display":"输血量","name":"PLAN_TRANSFUSION_VOLUME","field":"PLAN_TRANSFUSION_VOLUME"},{"display":"输血时间","name":"PLAN_TRANSFUSION_TIME","field":"PLAN_TRANSFUSION_TIME"},{"display":"不良反应","name":"ADVERSE_TRANSFUSION_REACTION","field":"ADVERSE_TRANSFUSION_REACTION"}]
+</code></pre>
+<h5><a id="34171__2229"></a>3.4.17.1 输血申请</h5>
+<p>根据pid，vid，结合查询条件{<code>VISIT_TYPE_CODE</code> 等于 02}，查询表<code>HDR_BLOOD_APPLY</code>，将字段按照<code>BLOOD_APPLY_VIEW_DISPLAY_COLUMN</code>配置映射展示。</p>
+<h5><a id="34172__2231"></a>3.4.17.2 配血记录</h5>
+<p>根据pid，vid，结合查询条件{<code>VISIT_TYPE_CODE</code> 等于 02}，查询表<code>HDR_PREPARE_BLOOD</code>，将字段按照<code>PREPARE_BLOOD_DISPLAY_COLUMN</code>配置映射展示。</p>
+<h5><a id="34173__2234"></a>3.4.17.3 输血记录</h5>
+<p>根据pid，vid，结合查询条件{<code>VISIT_TYPE_CODE</code> 等于 02}，查询表<code>HDR_BLOU</code>，将字段按照<code>BLOOD_VIEW_COLUMN</code>配置映射展示。</p>
+<h4><a id="3418__2237"></a>3.4.18 血透报告</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/5a851d4d626e4e01b5b2a55a59dc2742.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid,vid,vtype查询<code>HDR_HEMODIALYSIS</code>表，获取字段展示：</p>
+<pre><code>"REPORT_TIME", "DIALYSIS_MODE", "DIALYSIS_RESULT", "REPORT_DOCTOR_NAME", "REPORT_NURSE_NAME", "PACS_URL"
+</code></pre>
+<h4><a id="3419__2246"></a>3.4.19 手术介入</h4>
+<p>对应接口：<br>
+<img src="https://img-blog.csdnimg.cn/49c8c9f8d97d44e3993a8a3aa62b4075.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAWS5ULg==,size_18,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
+查询逻辑：<br>
+根据pid,vid,vtype查询<code>HDR_OPER_INTERVENTION</code>表，获取字段：</p>
+<pre><code>"OPER_REPORT_TIME", "OPERATION_NAME", "PDF_URL"
+</code></pre>
+<h3><a id="35__2256"></a>3.5 分类视图</h3>
+<h3><a id="36__2260"></a>3.6 当前视图</h3>
+<p>当前视图查看的是<strong>末次住院</strong>的就诊记录。因为一次门诊就诊的时间周期短，往往在一天之内，数据无法展示，而一次住院跨度很久，可以展示前几天的数据。</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
