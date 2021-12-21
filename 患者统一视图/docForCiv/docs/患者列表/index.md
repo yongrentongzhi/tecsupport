@@ -11,4 +11,4 @@ order: 3
 
 
 
-![在这里插入图片描述](docs/患者列表/img/huanzheliebiao001.png)
+![在这里插入图片描述](img/huanzheliebiao001.png)
