@@ -190,7 +190,7 @@ Shard的一个拷贝。每个Replica存在于Solr的一个Core中。换句话说
 
 进入document，选中xml格式，输入：
 
-```xml
+```
 <delete><query>*:*</query></delete>
 <commit/>
 ```
