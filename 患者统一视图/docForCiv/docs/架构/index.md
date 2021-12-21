@@ -135,17 +135,17 @@ solr的中的collection近似于mysql的表，是一个跨越多个服务器的�
 
 
 
-![](docs/架构/img/solr05.png)
+![](img/solr05.png)
 
 文件中配置字段约束的地方
 
-![](docs/架构/img/solr06.png)
+![](img/solr06.png)
 
 
 
 最终存储的数据
 
-![](docs/架构/img/solr07.png)
+![](img/solr07.png)
 
 
 
@@ -174,13 +174,13 @@ Shard的一个拷贝。每个Replica存在于Solr的一个Core中。换句话说
 
 
 
-![](docs/架构/img/solr08.png)
+![](img/solr08.png)
 
 
 
 输入条件查询数据
 
-![](docs/架构/img/solr09.png)
+![](img/solr09.png)
 
 
 
