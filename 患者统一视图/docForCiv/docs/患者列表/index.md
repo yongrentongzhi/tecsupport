@@ -1,5 +1,9 @@
-# 患者列表
-
+---
+toc: menu
+nav:
+title: 架构
+order: 3
+---
 
 
 患者列表展示的是每个patient_id下的末次就诊记录。
@@ -7,4 +11,4 @@
 
 
 
-![在这里插入图片描述](./img/huanzheliebiao001.png)
+![在这里插入图片描述](docs/患者列表/img/huanzheliebiao001.png)

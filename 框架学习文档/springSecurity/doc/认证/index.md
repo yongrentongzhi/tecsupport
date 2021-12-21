@@ -194,3 +194,53 @@ spring security中定义了`SecurityContextHolderStrategy`接口来规范存储�
 
 ![img.png](img/SecurityContextHolderStrategy实现.png)
 
+#### `SecurityContextPersistenceFilter`
+
+默认情况下，`SecurityContextPersistenceFilter`是第二道防线，它是为存储`SecurityContext`而设计，主要做2件事：
+- 当一个请求到来时，从`HttpSession`中获取`SecurityContext`并存入`SecurityContextHolder`中。这样，在同一个请求的后续过程中，开发者始终可以通过`SecurityContextHolder`获取用户信息。
+- 当一个请求处理完毕后，从`SecurityContextHolder`中获取`SecurityContext`并存入`HttpSession`中（主要针对异步servlet）。方便下一个请求到来时，再从`HttpSession`中拿出使用，同时擦除`SecurityContextHolder`中的登录用户信息。
+
+上述这些行为，都是有`SecurityContextRepository`接口的实现类完成的。
+
+`SecurityContextRepository`的实现类中，spring security默认使用的是`HttpSessionSecurityContextRepository`，该类定义了一个内部类实现了存储securityContext到HttpSession中的功能。
+
+`SecurityContextRepository`提供的所有功能将在`SecurityContextPersistenceFilter`进行调用。
+
+### 从当前请求对象中获取
+~~~
+@RestController
+public class LoginController {
+    @RequestMapping("/index")
+    public String index() {
+        return "login success";
+    }
+    @RequestMapping("/hello")
+    public String hello() {
+        return "hello spring security";
+    }
+    @RequestMapping("/authentication")
+    public void authentication(Authentication authentication) {
+        System.out.println("authentication = " + authentication);
+    }
+    @RequestMapping("/principal")
+    public void principal(Principal principal, HttpServletRequest req) {
+        System.out.println("req.getClass() = " + req.getClass());
+        System.out.println("principal = " + principal);
+    }
+    @RequestMapping("/info")
+    public void info(HttpServletRequest req) {
+        String remoteUser = req.getRemoteUser();
+        Authentication auth = ((Authentication) req.getUserPrincipal());
+        boolean admin = req.isUserInRole("admin");
+        System.out.println("remoteUser = " + remoteUser);
+        System.out.println("auth.getName() = " + auth.getName());
+        System.out.println("admin = " + admin);
+    }
+}
+
+~~~
+
+一个普通的Web项目，不使用任何框架，`HttpServletRequest`的默认实现类是Tomcat提供的。如果使用了Spring security框架，那么我们再Controller参数中拿到的`HttpServletRequest`实例将是`Servlet3SecurityContextHolderAwareRequestWrapper`，这是被spring security封装过的请求。
+直接将`Authentication`或`Princal`写到Controller参数中，实际上就是Spring MVC框架从`Servlet3SecurityContextHolderAwareRequestWrapper`中提取的用户信息。
+
+在Spring Security过滤器链中，有一个`SecurityContextHolderAwareRequestFilter`过滤器，该过滤器主要作用就是对`HttpServletRequest`转化为它的子类`Servlet3SecurityContextHolderAwareRequestWrapper`。
